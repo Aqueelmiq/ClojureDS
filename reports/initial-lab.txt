@@ -1,0 +1,26 @@
+Lab report for Initial Lab - amiqdad
+Timestamp: 2015-02-09 17:33:28
+
+|  :scenario |                                :title |                   :result | :score |
+|------------+---------------------------------------+---------------------------+--------|
+|    working | Test student code vs instructor tests |                      Pass |     45 |
+| qualifying | Test student tests vs instructor code |                      Fail |      4 |
+| qualifying |           Qualifying Scenarios Failed | No further scenarios run. |      0 |
+|      total |                           Total Score |                           |     49 |
+
+Details:
+
+
+** Details for Test student code vs instructor tests
+
+All checks (28) succeeded.
+
+
+** Details for Test student tests vs instructor code
+
+
+FAIL "about this lab - the student never bothered to start it." at (t_core.clj:38)
+    Expected: false
+      Actual: true
+FAILURE: 1 check failed.  (But 4 succeeded.)
+Subprocess failed
