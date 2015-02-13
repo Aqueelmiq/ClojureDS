@@ -10,6 +10,7 @@
   [& xx] 
   (let [n (count xx)] 
     (cond (< n 2) (apply + (cons 1 xx))
+          (= n 2) (apply + xx)
           :else   (- (apply + (cons 2 xx)) n)
     )))
 
@@ -22,11 +23,9 @@
   [& xx] 
   (let [n (count xx)]
     (cond (< n 2) (- (apply + xx) 1)
-          :else   (- (apply + (cons n xx)) 2)
-    )
-    )
-  )
-
+          (= n 2) (apply + xx)
+          :else   (- (apply + (cons n xx)) 2))
+    ))
 ; (capitalist-plus 10 20 30) => 61
 ; (capitalist-plus 10 20 20 10) => 62
 
