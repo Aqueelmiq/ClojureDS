@@ -65,8 +65,8 @@
 This is used by `insert-ordered`."
   [elt xx]
   (cond (empty? xx) (Cons. elt nil)
-        (> elt (:car xx)) (Cons. (:car xx) (insert-ordered-cons elt (:cdr xx)))
-        :fine-be-that-way (Cons. elt xx)))
+        (< elt (:car xx)) (Cons. elt xx)
+        :else (Cons. (:car xx) (insert-ordered-cons elt (:cdr xx)))))
 
 (defn insert-ordered
   "Insert an element into an ordered list."
@@ -79,10 +79,31 @@ This is used by `insert-ordered`."
 ;; Test broke-7 will forget to decrement the size.
 ;; Test broke-8 will always decrement the size, even if the element is not found.
 
+(defn dlt
+  [elt xx]
+  (cond (nil? xx) nil
+        (= elt (:car xx)) (:cdr xx)
+        :else (Cons. (:car xx) (dlt elt (:cdr xx)))))
+
+(defn dlta
+  [elt xx]
+  (cond (nil? xx) nil
+        (= elt (:car xx)) (dlta elt (:cdr xx))
+        :else (Cons. (:car xx) (dlta elt (:cdr xx)))))
+
 (defn delete
   "Delete `elt` from `xx`."
-  [elt xx])
+  [elt xx]
+  (List. (dlt elt (:data xx)) (- (:size xx) 1))
+  )
 
+(defn dcount
+  "Counts deletions"
+  [elt count xx]
+  (cond (nil? xx) count
+        (= elt (:car xx)) (dcount elt (+ count 1) (:cdr xx))
+        :else (dcount elt count (:cdr xx)))
+  )
 ;; The `delete-all` function will delete all copies of elt from xx.
 
 ;; Test broke-9 will delete only one copy.
@@ -91,4 +112,6 @@ This is used by `insert-ordered`."
 
 (defn delete-all
   "Delete all occurrences of `elt` from `xx`."
-  [elt xx])
+  [elt xx]
+  (List. (dlta elt (:data xx)) (- (:size xx) (dcount elt 0 (:data xx))))
+  )

@@ -52,10 +52,28 @@
       (-> (insert-ordered nulist 9) :data) => (list-to-cons '(1 5 8 9))
       (-> (insert-ordered nulist 5) :data) => (list-to-cons '(1 5 5 8)))))
 
-(facts "about `delete`")
+(facts "about `delete`"
+       (let [nulist (List. (Cons. 1 (Cons. 4 (Cons. 7 (Cons. 8 nil)))) 4)]
+         (fact "it deletes elements correctly."
+               (-> (delete 1 nulist) :data) => (list-to-cons '(4 7 8))
+               (-> (delete 4 nulist) :data) => (list-to-cons '(1 7 8))
+               (-> (delete 8 nulist) :data) => (list-to-cons '(1 4 7))
+               )
+         (fact "it decrements size correctly."
+               (-> (delete 1 nulist) :size) => 3
+               (-> (delete 4 nulist) :size) => 3
+               )))
 
-(facts "about `delete-all`")
+(facts "about `delete-all`"
+       (let [nulist3 (List. (Cons. 1 (Cons. 4 (Cons. 4 (Cons. 4 (Cons, 7 nil))))) 5)]
+         (fact "it delete every 4"
+               (-> (delete-all 4 nulist3) :data) => (list-to-cons '(1 7))
+               )
+         (fact "it decrements size correctly"
+               (-> (delete-all 4 nulist3) :size) => 2
+               )
+         ))
 
-(facts "about this lab"
-  (fact "the student never started.  Fix this `facts` from."
-    (+ 10 20) => 42))
+(facts "About this lab"
+  (fact "I started the lab! Yay"
+    (+ 10 20) => 30))
