@@ -58,19 +58,22 @@
                (-> (delete 1 nulist) :data) => (list-to-cons '(4 7 8))
                (-> (delete 4 nulist) :data) => (list-to-cons '(1 7 8))
                (-> (delete 8 nulist) :data) => (list-to-cons '(1 4 7))
+               (-> (delete 5 nulist) :data) => (list-to-cons '(1 4 7 8))
                )
          (fact "it decrements size correctly."
                (-> (delete 1 nulist) :size) => 3
-               (-> (delete 4 nulist) :size) => 3
+               (-> (delete 5 nulist) :size) => 4
                )))
 
 (facts "about `delete-all`"
-       (let [nulist3 (List. (Cons. 1 (Cons. 4 (Cons. 4 (Cons. 4 (Cons, 7 nil))))) 5)]
+       (let [nulist3 (List. (Cons. 1 (Cons. 4 (Cons. 4 (Cons. 4 (Cons. 7 nil))))) 5)]
          (fact "it delete every 4"
                (-> (delete-all 4 nulist3) :data) => (list-to-cons '(1 7))
+               (-> (delete-all 5 nulist3) :data) => (list-to-cons '(1 4 4 4 7))
                )
          (fact "it decrements size correctly"
                (-> (delete-all 4 nulist3) :size) => 2
+               (-> (delete-all 5 nulist3) :size) => 5
                )
          ))
 

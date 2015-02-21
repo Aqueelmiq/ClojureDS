@@ -61,8 +61,7 @@
 ;; Test broke-5 will use `(Cons. (:car xx) nil)` in the second case.
 
 (defn insert-ordered-cons
-  "Insert the element `elt` into an ordered `Cons.` chain.
-This is used by `insert-ordered`."
+  "Insert the element `elt` into an ordered `Cons.` chain.This is used by `insert-ordered`."
   [elt xx]
   (cond (empty? xx) (Cons. elt nil)
         (< elt (:car xx)) (Cons. elt xx)
@@ -91,10 +90,18 @@ This is used by `insert-ordered`."
         (= elt (:car xx)) (dlta elt (:cdr xx))
         :else (Cons. (:car xx) (dlta elt (:cdr xx)))))
 
+(defn dcount1
+  "Counts delted or not"
+  [elt xx]
+  (cond (nil? xx) 0
+        (= elt (:car xx)) 1
+        :else (dcount1 elt (:rest xx)))
+  )
+
 (defn delete
   "Delete `elt` from `xx`."
   [elt xx]
-  (List. (dlt elt (:data xx)) (- (:size xx) 1))
+  (List. (dlt elt (:data xx)) (- (:size xx) (dcount1 elt (:data xx))))
   )
 
 (defn dcount
