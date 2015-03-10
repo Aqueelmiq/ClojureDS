@@ -4,5 +4,9 @@
   (:import [deque.core Deque] ))
 
 (facts "about this lab"
-  (fact "the student never started it."
-        (+ 1 2)  => 12))
+  (fact "the student started the lab"
+        (+ 1 2)  => 3))
+
+(facts "About Make Deque"
+       (fact "It makes a nice empty Deque list"
+             (make-deque) => ))
