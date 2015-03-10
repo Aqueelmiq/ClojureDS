@@ -29,28 +29,31 @@
 (defn flip-front
   "Flip the back list to the front list, if necessary."
   [dq]
-  (cond (empty? (:front dq)) (Deque. (reverse (:back dq)) '() (:size dq))
-        :else dq
-        )
+  (let [{:keys [front back size]} dq]
+    (cond (empty? (:front dq)) (Deque. (reverse (:back dq)) '() (:size dq))
+          :else dq))
 )
 
 (defn flip-back
   "Flip the front list to the back list, if necessary."
   [dq]
-  (cond (empty? (:back dq)) (Deque. '() (reverse (:front dq)) (:size dq))
-        :else dq)
+  (let [{:keys [front back size]} dq]
+    (cond (empty? (:back dq)) (Deque. '() (reverse (:front dq)) (:size dq))
+                  :else dq))
 )
 
 (defn front
   "Return the front element of the deque.  May cause a flip."
   [dq]
-  (:front (flip-front dq))
+  (let [{:keys [front back size]} dq]
+    (:front (flip-front dq)))
 )
 
 (defn back
   "Return the back element of the deque.  May cause a flip."
   [dq]
-  (:back (flip-back dq))
+  (let [{:keys [front back size]} dq]
+    (:back (flip-back dq)))
 )
 
 (defn pop-front
