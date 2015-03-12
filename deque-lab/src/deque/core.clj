@@ -60,11 +60,16 @@
   "Pops/dequeues an element from the front of the deque."
   [dq]
   (let [{:keys [front back size]} dq]
-        (Deque. (rest (:front dq)) (:back dq) (- size 1))))
+    (cond (empty? (:front dq)) dq
+          :else (Deque. (rest (:front dq)) (:back dq) (- size 1))
+    )
+    ))
 
 (defn pop-back
   "Pops/dequeues an element from the back of the deque."
   [dq]
   (let [{:keys [front back size]} dq]
-        (Deque. (:front dq) (rest (:back dq)) (- size 1))))
-
+    (cond (empty? (:back dq)) dq
+          :else (Deque. (:front dq) (rest (:back dq)) (- size 1))
+    )
+    ))
