@@ -1,21 +1,21 @@
 Lab report for Deque Lab - amiqdad
-Timestamp: 2015-03-12 13:58:57
+Timestamp: 2015-03-12 14:20:22
 
-|  :scenario |                                :title |                                   :result | :score |
-|------------+---------------------------------------+-------------------------------------------+--------|
-|    working | Test student code vs instructor tests |                                      Pass |     45 |
-| qualifying | Test student tests vs instructor code |                                      Pass |      5 |
-|    broke-1 |             deque-size only returns 0 |      Pass: student tests detected errors. |      5 |
-|    broke-2 |     push-front doesn't increment size | Fail: Student tests did not detect error. |      0 |
-|    broke-3 |        pop-back lets size go negative | Fail: Student tests did not detect error. |      0 |
-|    broke-4 |            pop-front doesn't dec size | Fail: Student tests did not detect error. |      0 |
-|    broke-5 |          push-back inserts into front |      Pass: student tests detected errors. |      5 |
-|    broke-6 |     flip-front doesn't clear the back | Fail: Student tests did not detect error. |      0 |
-|    broke-7 |     flip-back doesn't clear the front | Fail: Student tests did not detect error. |      0 |
-|    broke-8 |                back doesn't flip list |      Pass: student tests detected errors. |      5 |
-|    broke-9 |        front references the back list |      Pass: student tests detected errors. |      5 |
-|   broke-10 |               flip-front flips always |      Pass: student tests detected errors. |      5 |
-|      total |                           Total Score |                                           |     75 |
+|  :scenario |                                :title |                              :result | :score |
+|------------+---------------------------------------+--------------------------------------+--------|
+|    working | Test student code vs instructor tests |                                 Pass |     45 |
+| qualifying | Test student tests vs instructor code |                                 Pass |      5 |
+|    broke-1 |             deque-size only returns 0 | Pass: student tests detected errors. |      5 |
+|    broke-2 |     push-front doesn't increment size | Pass: student tests detected errors. |      5 |
+|    broke-3 |        pop-back lets size go negative | Pass: student tests detected errors. |      5 |
+|    broke-4 |            pop-front doesn't dec size | Pass: student tests detected errors. |      5 |
+|    broke-5 |          push-back inserts into front | Pass: student tests detected errors. |      5 |
+|    broke-6 |     flip-front doesn't clear the back | Pass: student tests detected errors. |      5 |
+|    broke-7 |     flip-back doesn't clear the front | Pass: student tests detected errors. |      5 |
+|    broke-8 |                back doesn't flip list | Pass: student tests detected errors. |      5 |
+|    broke-9 |        front references the back list | Pass: student tests detected errors. |      5 |
+|   broke-10 |               flip-front flips always | Pass: student tests detected errors. |      5 |
+|      total |                           Total Score |                                      |    100 |
 
 Details:
 
@@ -27,7 +27,7 @@ All checks (100) succeeded.
 
 ** Details for Test student tests vs instructor code
 
-All checks (29) succeeded.
+All checks (43) succeeded.
 
 
 ** Details for deque-size only returns 0
@@ -45,75 +45,116 @@ FAIL "About Size of Deque - It shows size  correctly" at (t_core.clj:24)
     Expected: 4
       Actual: 0
 
-FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:74)
+FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:85)
     Expected: (2 3 4)
       Actual: (1 2 3 4)
 
-FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:75)
+FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:86)
     Expected: (3 4 5)
       Actual: ()
 
-FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:76)
+FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:87)
     Expected: (4 5 6)
       Actual: (3 4 5 6)
 
-FAIL "About Pop-Front and Pop-Back - The pop-back works correctly" at (t_core.clj:78)
+FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:89)
+    Expected: 7
+      Actual: 8
+
+FAIL "About Pop-Front and Pop-Back - The pop-back works correctly" at (t_core.clj:92)
     Expected: (9 8 7)
       Actual: (10 9 8 7)
 
-FAIL "About Pop-Front and Pop-Back - The pop-back works correctly" at (t_core.clj:79)
+FAIL "About Pop-Front and Pop-Back - The pop-back works correctly" at (t_core.clj:93)
     Expected: (4 3 2)
       Actual: (5 4 3 2)
 
-FAIL "About Pop-Front and Pop-Back - The pop-back works correctly" at (t_core.clj:80)
+FAIL "About Pop-Front and Pop-Back - The pop-back works correctly" at (t_core.clj:94)
     Expected: (5 4 3)
       Actual: ()
-FAILURE: 9 checks failed.  (But 20 succeeded.)
+
+FAIL "About Pop-Front and Pop-Back - The pop-back works correctly" at (t_core.clj:96)
+    Expected: 7
+      Actual: 8
+FAILURE: 11 checks failed.  (But 32 succeeded.)
 Subprocess failed
 
 
 ** Details for push-front doesn't increment size
 
-All checks (29) succeeded.
+
+FAIL "About Push-Front and Push-Back - The push-front works correctly" at (t_core.clj:34)
+    Expected: 1
+      Actual: 0
+
+FAIL "About Push-Front and Push-Back - The push-front works correctly" at (t_core.clj:35)
+    Expected: 2
+      Actual: 0
+
+FAIL "About Push-Front and Push-Back - The push-back works correctly" at (t_core.clj:41)
+    Expected: 2
+      Actual: 0
+FAILURE: 3 checks failed.  (But 40 succeeded.)
+Subprocess failed
 
 
 ** Details for pop-back lets size go negative
 
-All checks (29) succeeded.
+
+FAIL "About Pop-Front and Pop-Back - The pop-back works correctly" at (t_core.clj:95)
+    Expected: 0
+      Actual: -1
+FAILURE: 1 check failed.  (But 42 succeeded.)
+Subprocess failed
 
 
 ** Details for pop-front doesn't dec size
 
-All checks (29) succeeded.
+
+FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:89)
+    Expected: 7
+      Actual: 8
+FAILURE: 1 check failed.  (But 42 succeeded.)
+Subprocess failed
 
 
 ** Details for push-back inserts into front
 
 
-FAIL "About Push-Front and Push-Back - The push-back works correctly" at (t_core.clj:37)
+FAIL "About Push-Front and Push-Back - The push-back works correctly" at (t_core.clj:39)
     Expected: 11
       Actual: 10
-FAILURE: 1 check failed.  (But 28 succeeded.)
+FAILURE: 1 check failed.  (But 42 succeeded.)
 Subprocess failed
 
 
 ** Details for flip-front doesn't clear the back
 
-All checks (29) succeeded.
+
+FAIL "About Flip-Front and Flip-Back - The flip-front works correctly" at (t_core.clj:53)
+    Expected: ()
+      Actual: (5 4 3 2)
+FAILURE: 1 check failed.  (But 42 succeeded.)
+Subprocess failed
 
 
 ** Details for flip-back doesn't clear the front
 
-All checks (29) succeeded.
+
+FAIL "About Flip-Front and Flip-Back - The flip-back works correctly" at (t_core.clj:61)
+    Expected: ()
+      Actual: (3 4 5 6)
+FAILURE: 1 check failed.  (But 42 succeeded.)
+Subprocess failed
 
 
 ** Details for back doesn't flip list
 
 
-FAIL "About Front and Back - The back works correctly" at (t_core.clj:66)
+FAIL "About Front and Back - The back works correctly" at (t_core.clj:76)
     Expected: 6
       Actual: nil
-FAILURE: 1 check failed.  (But 28 succeeded.)
+FAILURE: 1 check failed.  (But 42 succeeded.)
 Subprocess failed
 
 
@@ -128,18 +169,18 @@ FAIL "About Push-Front and Push-Back - The push-front works correctly" at (t_cor
     Expected: 11
       Actual: nil
 
-FAIL "About Front and Back - The front works correctly" at (t_core.clj:59)
+FAIL "About Front and Back - The front works correctly" at (t_core.clj:69)
     Expected: 1
       Actual: 10
 
-FAIL "About Front and Back - The front works correctly" at (t_core.clj:60)
+FAIL "About Front and Back - The front works correctly" at (t_core.clj:70)
     Expected: 2
       Actual: nil
 
-FAIL "About Front and Back - The front works correctly" at (t_core.clj:61)
+FAIL "About Front and Back - The front works correctly" at (t_core.clj:71)
     Expected: 3
       Actual: nil
-FAILURE: 5 checks failed.  (But 24 succeeded.)
+FAILURE: 5 checks failed.  (But 38 succeeded.)
 Subprocess failed
 
 
@@ -154,28 +195,32 @@ FAIL "About Push-Front and Push-Back - The push-front works correctly" at (t_cor
     Expected: 11
       Actual: nil
 
-FAIL "About Flip-Front and Flip-Back - The flip-front works correctly" at (t_core.clj:45)
+FAIL "About Flip-Front and Flip-Back - The flip-front works correctly" at (t_core.clj:49)
     Expected: (1 2 3 4)
       Actual: (7 8 9 10)
 
-FAIL "About Flip-Front and Flip-Back - The flip-front works correctly" at (t_core.clj:47)
+FAIL "About Flip-Front and Flip-Back - The flip-front works correctly" at (t_core.clj:51)
     Expected: (3 4 5 6)
       Actual: ()
 
-FAIL "About Front and Back - The front works correctly" at (t_core.clj:59)
+FAIL "About Flip-Front and Flip-Back - The flip-front works correctly" at (t_core.clj:52)
+    Expected: (10 9 8 7)
+      Actual: ()
+
+FAIL "About Front and Back - The front works correctly" at (t_core.clj:69)
     Expected: 1
       Actual: 7
 
-FAIL "About Front and Back - The front works correctly" at (t_core.clj:61)
+FAIL "About Front and Back - The front works correctly" at (t_core.clj:71)
     Expected: 3
       Actual: nil
 
-FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:74)
+FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:85)
     Expected: (2 3 4)
       Actual: (8 9 10)
 
-FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:76)
+FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:87)
     Expected: (4 5 6)
       Actual: ()
-FAILURE: 8 checks failed.  (But 21 succeeded.)
+FAILURE: 9 checks failed.  (But 34 succeeded.)
 Subprocess failed
