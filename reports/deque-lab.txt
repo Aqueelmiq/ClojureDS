@@ -1,12 +1,12 @@
 Lab report for Deque Lab - amiqdad
-Timestamp: 2015-03-10 18:30:28
+Timestamp: 2015-03-12 10:38:48
 
 |  :scenario |                                :title |                   :result | :score |
 |------------+---------------------------------------+---------------------------+--------|
-|    working | Test student code vs instructor tests |                           |        |
-| qualifying | Test student tests vs instructor code |                      Fail |      2 |
+|    working | Test student code vs instructor tests |                      Fail |     32 |
+| qualifying | Test student tests vs instructor code |                      Fail |      4 |
 | qualifying |           Qualifying Scenarios Failed | No further scenarios run. |      0 |
-|      total |                           Total Score |                           |      2 |
+|      total |                           Total Score |                           |     36 |
 
 Details:
 
@@ -14,53 +14,9 @@ Details:
 ** Details for Test student code vs instructor tests
 
 
-FAIL "about push-front and pop - push-front adds elements to the front." at (t_core.clj:29)
-    Expected: 10
-      Actual: (10)
-
-FAIL "about push-front and pop - push-front adds elements to the front." at (t_core.clj:32)
-    Expected: 20
-      Actual: (20 10)
-
-FAIL "about push-front and pop - push-front adds elements to the front." at (t_core.clj:35)
-    Expected: 34
-      Actual: (34 20 10)
-
-FAIL "about push-front and pop - pop-front removes elements from the front" at (t_core.clj:42)
-    Expected: (20 10)
-      Actual: nil
-
-FAIL "about push-front and pop - pop-front removes elements from the front" at (t_core.clj:43)
-    Expected: 20
-      Actual: ()
-
-FAIL "about push-front and pop - pop-front removes elements from the front" at (t_core.clj:45)
-    Expected: (10)
-      Actual: nil
-
-FAIL "about push-front and pop - pop-front removes elements from the front" at (t_core.clj:46)
-    Expected: 10
-      Actual: ()
-
-FAIL "about push-front and pop - pop-front removes elements from the front" at (t_core.clj:48)
-    Expected: ()
-      Actual: nil
-
-FAIL "about push-front and pop - pop-front removes elements from the front" at (t_core.clj:49)
-    Expected: nil
-      Actual: ()
-
 FAIL "about push-front and pop - pop-front removes elements from the front" at (t_core.clj:50)
     Expected: 0
       Actual: -1
-
-FAIL "about push-front and pop - pop-front removes elements from the front" at (t_core.clj:51)
-    Expected: ()
-      Actual: nil
-
-FAIL "about push-front and pop - pop-front removes elements from the front" at (t_core.clj:52)
-    Expected: nil
-      Actual: ()
 
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:55)
     Expected: ()
@@ -68,15 +24,11 @@ FAIL "about push-front and pop - pop-back removes elements from the back" at (t_
 
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:56)
     Expected: (20 34)
-      Actual: nil
-
-FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:57)
-    Expected: 34
-      Actual: (34 20 10)
+      Actual: ()
 
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:58)
     Expected: 20
-      Actual: (10 20 34)
+      Actual: 10
 
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:61)
     Expected: ()
@@ -84,31 +36,23 @@ FAIL "about push-front and pop - pop-back removes elements from the back" at (t_
 
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:62)
     Expected: (34)
-      Actual: nil
-
-FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:63)
-    Expected: 34
-      Actual: (34 20 10)
+      Actual: ()
 
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:64)
     Expected: 34
-      Actual: (10 20 34)
+      Actual: 10
 
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:67)
     Expected: ()
       Actual: (34 20 10)
 
-FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:68)
-    Expected: ()
-      Actual: nil
-
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:69)
     Expected: nil
-      Actual: (34 20 10)
+      Actual: 34
 
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:70)
     Expected: nil
-      Actual: (10 20 34)
+      Actual: 10
 
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:72)
     Expected: 0
@@ -118,80 +62,82 @@ FAIL "about push-front and pop - pop-back removes elements from the back" at (t_
     Expected: ()
       Actual: (34 20 10)
 
-FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:74)
-    Expected: ()
-      Actual: nil
-
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:75)
     Expected: nil
-      Actual: (34 20 10)
+      Actual: 34
 
 FAIL "about push-front and pop - pop-back removes elements from the back" at (t_core.clj:76)
     Expected: nil
-      Actual: (10 20 34)
-Exception in thread "main" java.lang.IllegalArgumentException: Don't know how to create ISeq from: java.lang.Long
-	at clojure.lang.RT.seqFrom(RT.java:505)
-	at clojure.lang.RT.seq(RT.java:486)
-	at clojure.lang.RT.cons(RT.java:572)
-	at clojure.core$cons.invoke(core.clj:29)
-	at deque.core$push_back.invoke(core.clj:27)
-	at deque.t_core$eval6476$base_function__5041__auto____6477$fn__6478.invoke(t_core.clj:78)
-	at midje.util.thread_safe_var_nesting$with_altered_roots_STAR_.invoke(thread_safe_var_nesting.clj:32)
-	at deque.t_core$eval6476$base_function__5041__auto____6477.invoke(t_core.clj:78)
-	at clojure.lang.AFn.applyToHelper(AFn.java:159)
-	at clojure.lang.AFn.applyTo(AFn.java:151)
-	at clojure.lang.AFunction$1.doInvoke(AFunction.java:29)
-	at clojure.lang.RestFn.invoke(RestFn.java:397)
-	at midje.checking.facts$check_one$fn__5001.invoke(facts.clj:31)
-	at midje.checking.facts$check_one.invoke(facts.clj:30)
-	at midje.checking.facts$creation_time_check.invoke(facts.clj:35)
-	at deque.t_core$eval6476.invoke(t_core.clj:78)
-	at clojure.lang.Compiler.eval(Compiler.java:6619)
-	at clojure.lang.Compiler.load(Compiler.java:7064)
-	at clojure.lang.RT.loadResourceScript(RT.java:370)
-	at clojure.lang.RT.loadResourceScript(RT.java:361)
-	at clojure.lang.RT.load(RT.java:440)
-	at clojure.lang.RT.load(RT.java:411)
-	at clojure.core$load$fn__5018.invoke(core.clj:5530)
-	at clojure.core$load.doInvoke(core.clj:5529)
-	at clojure.lang.RestFn.invoke(RestFn.java:408)
-	at clojure.core$load_one.invoke(core.clj:5336)
-	at clojure.core$load_lib$fn__4967.invoke(core.clj:5375)
-	at clojure.core$load_lib.doInvoke(core.clj:5374)
-	at clojure.lang.RestFn.applyTo(RestFn.java:142)
-	at clojure.core$apply.invoke(core.clj:619)
-	at clojure.core$load_libs.doInvoke(core.clj:5413)
-	at clojure.lang.RestFn.applyTo(RestFn.java:137)
-	at clojure.core$apply.invoke(core.clj:619)
-	at clojure.core$require.doInvoke(core.clj:5496)
-	at clojure.lang.RestFn.invoke(RestFn.java:421)
-	at midje.repl$load_facts$fn__6189.invoke(repl.clj:206)
-	at midje.repl$load_facts.doInvoke(repl.clj:192)
-	at clojure.lang.RestFn.invoke(RestFn.java:397)
-	at user$eval6251.invoke(form-init7296900950423408933.clj:1)
-	at clojure.lang.Compiler.eval(Compiler.java:6619)
-	at clojure.lang.Compiler.eval(Compiler.java:6609)
-	at clojure.lang.Compiler.load(Compiler.java:7064)
-	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
-	at clojure.main$load_script.invoke(main.clj:294)
-	at clojure.main$init_opt.invoke(main.clj:299)
-	at clojure.main$initialize.invoke(main.clj:327)
-	at clojure.main$null_opt.invoke(main.clj:362)
-	at clojure.main$main.doInvoke(main.clj:440)
-	at clojure.lang.RestFn.invoke(RestFn.java:421)
-	at clojure.lang.Var.invoke(Var.java:419)
-	at clojure.lang.AFn.applyToHelper(AFn.java:163)
-	at clojure.lang.Var.applyTo(Var.java:532)
-	at clojure.main.main(main.java:37)
+      Actual: 10
+
+FAIL "about push-back and pop - pop-back removes elements from the back" at (t_core.clj:115)
+    Expected: 0
+      Actual: -1
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:120)
+    Expected: ()
+      Actual: (34 20 10)
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:121)
+    Expected: (20 34)
+      Actual: ()
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:123)
+    Expected: 20
+      Actual: 10
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:126)
+    Expected: ()
+      Actual: (34 20 10)
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:127)
+    Expected: (34)
+      Actual: ()
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:129)
+    Expected: 34
+      Actual: 10
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:132)
+    Expected: ()
+      Actual: (34 20 10)
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:134)
+    Expected: nil
+      Actual: 34
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:135)
+    Expected: nil
+      Actual: 10
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:137)
+    Expected: 0
+      Actual: -1
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:138)
+    Expected: ()
+      Actual: (34 20 10)
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:140)
+    Expected: nil
+      Actual: 34
+
+FAIL "about push-back and pop - pop-front removes elements from the front" at (t_core.clj:141)
+    Expected: nil
+      Actual: 10
+FAILURE: 28 checks failed.  (But 72 succeeded.)
 Subprocess failed
 
 
 ** Details for Test student tests vs instructor code
 
 
-FAIL at (t_core.clj:11)
-    Midje could not understand something you wrote: 
-            This form: (fact It makes a nice empty Deque list (make-deque) =>)
-        ... has the wrong shape. Expecting: (<actual> => <expected> [<keyword-value pairs>*])
-FAILURE: 1 check failed.  (But 1 succeeded.)
+FAIL "About Pop-Front and Pop-Back - The pop-front works correctly" at (t_core.clj:75)
+    Expected: ()
+      Actual: (3 4 5)
+
+FAIL "About Pop-Front and Pop-Back - The pop-back works correctly" at (t_core.clj:80)
+    Expected: ()
+      Actual: (5 4 3)
+FAILURE: 2 checks failed.  (But 27 succeeded.)
 Subprocess failed
