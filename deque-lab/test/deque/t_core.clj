@@ -29,12 +29,12 @@
              q2 (push-front (make-deque) 10)
              q3 (push-back (make-deque) 20)]
          (fact "The push-front works correctly"
-               (front (push-front q1 1)) => '(1)
-               (front (push-front q2 11)) => '(11 10)
+               (front (push-front q1 1)) => 1
+               (front (push-front q2 11)) => 11
                )
          (fact "The push-back works correctly"
-               (back (push-back q1 1)) => '(1)
-               (back (push-back q2 11)) => '(11 20)
+               (back (push-back q1 1)) => 1
+               (back (push-back q2 11)) => 11
                )))
 
 (facts "About Flip-Front and Flip-Back"
@@ -57,13 +57,13 @@
              q9 (Deque. '(3 4 5 6) '() 4)]
          (fact "The front works correctly"
                (front q7) => 1
-               (front q8) => nil
+               (front q8) => 2
                (front q9) => 3
                )
          (fact "The back works correctly"
                (back q7) => 10
                (back q8) => 5
-               (back q9) => nil
+               (back q9) => 6
                )))
 
 (facts "About Pop-Front and Pop-Back"
@@ -71,10 +71,10 @@
              q11 (Deque. '() '(5 4 3 2) 4)
              q12 (Deque. '(3 4 5 6) '() 4)]
          (fact "The pop-front works correctly"
-               (:front (pop-front q4))=> '(2 3 4)
-               (:front (pop-front q5))=> '(3 4 5)
-               (:front (pop-front q6))=> '(4 5 6))
+               (:front (pop-front q10))=> '(2 3 4)
+               (:front (pop-front q11))=> '()
+               (:front (pop-front q12))=> '(4 5 6))
          (fact "The pop-back works correctly"
-               (:back (pop-back q4))=> '(9 8 7)
-               (:back (pop-back q5))=> '(4 3 2)
-               (:back (pop-back q6))=> '(5 4 3))))
+               (:back (pop-back q10))=> '(9 8 7)
+               (:back (pop-back q11))=> '(4 3 2)
+               (:back (pop-back q12))=> '())))

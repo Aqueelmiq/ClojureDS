@@ -24,7 +24,7 @@
   "Adds an element to the back fo the deque."
   [dq elt]
   (let [{:keys [front back size]} dq]
-    (Deque. (:front dq) (cons (:back dq) elt) (inc size))))
+    (Deque. (:front dq) (cons elt (:back dq)) (inc size))))
 
 (defn flip-front
   "Flip the back list to the front list, if necessary."
@@ -39,32 +39,32 @@
   [dq]
   (let [{:keys [front back size]} dq]
     (cond (empty? (:back dq)) (Deque. '() (reverse (:front dq)) (:size dq))
-                  :else dq))
+          :else dq))
 )
 
 (defn front
   "Return the front element of the deque.  May cause a flip."
   [dq]
   (let [{:keys [front back size]} dq]
-    (:first (:front (flip-front dq))))
+    (first (:front (flip-front dq))))
 )
 
 (defn back
   "Return the back element of the deque.  May cause a flip."
   [dq]
   (let [{:keys [front back size]} dq]
-    (:first (:back (flip-back dq))))
+    (first (:back (flip-back dq))))
 )
 
 (defn pop-front
   "Pops/dequeues an element from the front of the deque."
   [dq]
   (let [{:keys [front back size]} dq]
-        (Deque. (:rest front) back (- size 1))))
+        (Deque. (rest (:front dq)) (:back dq) (- size 1))))
 
 (defn pop-back
   "Pops/dequeues an element from the back of the deque."
   [dq]
   (let [{:keys [front back size]} dq]
-        (Deque. front (:rest back) (- size 1))))
+        (Deque. (:front dq) (rest (:back dq)) (- size 1))))
 
