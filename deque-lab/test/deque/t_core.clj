@@ -72,9 +72,9 @@
              q12 (Deque. '(3 4 5 6) '() 4)]
          (fact "The pop-front works correctly"
                (:front (pop-front q10))=> '(2 3 4)
-               (:front (pop-front q11))=> '()
+               (:front (pop-front q11))=> '(3 4 5)
                (:front (pop-front q12))=> '(4 5 6))
          (fact "The pop-back works correctly"
                (:back (pop-back q10))=> '(9 8 7)
                (:back (pop-back q11))=> '(4 3 2)
-               (:back (pop-back q12))=> '())))
+               (:back (pop-back q12))=> '(5 4 3))))
