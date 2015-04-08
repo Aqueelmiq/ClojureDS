@@ -23,17 +23,24 @@
 
 (defn size "Return the size of the tree."
   [t]
-  0)
+  (:size t)
+  )
 
 ;; # Add
 ;;
 ;; The nodes will be entered into the tree on the basis of their key.
 ;; If someone tries to add a key that is already there, we replace the value
 ;; with the new entry.
+(defn add-helper
+  [bt nu-key nu-val]
+  (cond (nil? (:key bt)) (BNode. nil nu-key nu-value nil)
+        (= (:key bt) nu-key) (Bnode. (:left bt) (nu-key) (nu-val) (:right bt))
+        (< (:key bt) nu-key) (Bnode. ((add-helper (:left bt) nu-key nu-val)) (:key bt) (:value bt) (:right bt)) 
+        :else (Bnode. ((add-helper (:left bt) nu-key nu-val)) (:key bt) (:value bt) ((add-helper (:right bt) nu-key nu-val)))))
 
 (defn add "Add a key and value to the BST."
   [bst nu-key nu-val]
-  nil)
+  (Bnode. (add-helper (:root bst) nu-key nu-val) (+ (:size bst) 1)))
 
 ;; # Find
 ;;
@@ -43,23 +50,49 @@
 ;; there, return nil.
 
 (defn find "Look for a key and return the corresponding value."
-  [bst look-key] nil)
+  [bst look-key]
+  (cond (nil? bst) nil
+        (= (:key bst) look-key) (:value bst)
+        (< (:key bst) look-key) (find-key (:right bst) look-key)
+        :else (find-key (:left bst) look-key)))
 
 (defn find-key "Look for a value and return the corresponding key."
-  [bst look-value] nil)
+  [bst look-value]
+  (cond (nil? bst) nil
+        (= (:value bst) look-value) (:key bst)
+        :else (do (find (:left bst) look-value) (find (:right bst) look-value))))
 
 ;; # Delete
 ;;
 ;; Similiarly, we have two versions of delete.  Please use the predecessor node if
 ;; you need to delete a child with two elements.
 
+(defn predec
+  [bst victim]
+  (cond (nil? (:right bst)) bst
+        (< (:value bst) victim) (predec (:right bst) victim)
+        :else bst
+        ))
+
+(defn dlt-hlp
+  [bst value]
+  (cond (and (nil? (:left bst)) (nil? (:right bst))) nil
+        (nil? (:left bst)) (:right bst)
+        (nil? (:right bst)) (:left bst)
+        :else (predec (:left bst) value)))
+
 (defn delete [bst victim]
-  nil
-  )
+  (cond (nil? bst) nil
+        (= (:key bst) victim) (dlt-hlp bst victim)
+        :else (do (delete (:left bst)) (delete (:right bst) victim))
+        ))
 
 (defn delete-value [bst victim]
-  nil
-  )
+  (cond (nil? bst) nil
+        (= (:value bst) victim) (dlt-hlp bst victim)
+        (< (:value bst) victim) (delete (:left bst) victim)
+        :else (delete (:right bst) victim)
+        ))
 
 ;; # Map Tree
 ;;
@@ -68,4 +101,6 @@
 ;; will return ((x 4 x) 6 ((x 8 x) 7 x))
 
 (defn map-tree
-  [t f] nil)
+  [t f]
+  (cond (nil? t) nil
+        :else (BNode. (map-tree (:left t)) (:key t) (f (:data t)) (map-tree (:right t)))))
