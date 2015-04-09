@@ -39,14 +39,22 @@
 (defn add-helper
   [bt nu-key nu-val]
   (cond (nil? bt) (BNode. nil nu-key nu-val nil)
-        (= (:key bt) nu-key) (BNode. (:left bt) (:key bt) nu-val (:right bt))
-        (> (:key bt) nu-key) (BNode. (add-helper (:left bt) nu-key nu-val) (:key bt) (:value bt) (:right bt)) 
+        (= 0 (compare (:key bt) nu-key)) (BNode. (:left bt) (:key bt) nu-val (:right bt))
+        (< 0 (compare (:key bt) nu-key)) (BNode. (add-helper (:left bt) nu-key nu-val) (:key bt) (:value bt) (:right bt)) 
         :else (BNode. (:left bt) (:key bt) (:value bt) (add-helper (:right bt) nu-key nu-val))
+        ))
+
+(defn add-size
+  [bst nu-key nu-val]
+  (cond (nil? bst) 1
+        (= 0 (compare (:key bst) nu-key)) 0
+        (< 0 (compare (:key bst) nu-key)) (add-size (:left bst) nu-key nu-val)
+        :else (add-size (:right bst) nu-key nu-val)
         ))
 
 (defn add "Add a key and value to the BST."
   [bst nu-key nu-val]
-  (BST. (add-helper (:root bst) nu-key nu-val) (+ (:size bst) 1))
+  (BST. (add-helper (:root bst) nu-key nu-val) (+ (:size bst) (add-size (:root bst) nu-key nu-val)))
   )
 
 ;; # Find
@@ -59,14 +67,14 @@
 (defn find-hlp
   [bst look-key]
   (cond (nil? bst) nil
-        (= (:key bst) look-key) (:value bst)
-        (< (:key bst) look-key) (find-hlp (:right bst) look-key)
+        (= 0 (compare (:key bst) look-key)) (:value bst)
+        (> 0 (compare (:key bst) look-key)) (find-hlp (:right bst) look-key)
         :else (find-hlp (:left bst) look-key)))
 
 (defn find-hlp2
   [bst look-value]
   (cond (nil? bst) nil
-        (= (:value bst) look-value) (:key bst)
+        (= 0 (compare (:value bst) look-value)) (:key bst)
         :else (if (nil? (find-hlp2 (:left bst) look-value)) (find-hlp2 (:right bst) look-value) (find-hlp2 (:left bst) look-value))
         ))
 
@@ -87,13 +95,13 @@
 (defn predec
   [bst victim]
   (cond (nil? (:right bst)) bst
-        (< (:key bst) victim) (predec (:right bst) victim)
+        (> 0 (compare (:key bst) victim)) (predec (:right bst) victim)
         :else bst))
 
 (defn pr-help
   [bst victim]
   (cond (nil? (:right bst)) nil
-        (< (:key bst) victim) (BNode. (:left bst) (:key bst) (:value bst) (pr-help (:right bst) victim))
+        (> 0 (compare (:key bst) victim)) (BNode. (:left bst) (:key bst) (:value bst) (pr-help (:right bst) victim))
         :else nil))
 
 (defn dlt-hlp
@@ -106,23 +114,39 @@
 (defn my-del
   [bst victim]
   (cond (nil? bst) nil
-        (= (:key bst) victim) (dlt-hlp bst victim)
-        (< (:key bst) victim) (BNode. (:left bst) (:key bst) (:value bst) (my-del (:right bst) victim))
+        (= 0 (compare (:key bst) victim)) (dlt-hlp bst victim)
+        (> 0 (compare (:key bst) victim)) (BNode. (:left bst) (:key bst) (:value bst) (my-del (:right bst) victim))
         :else (BNode. (my-del (:left bst) victim) (:key bst) (:value bst) (:right bst))))
 
 (defn my-del2
   [bst victim]
   (cond (nil? bst) nil
-        (= (:value bst) victim) (dlt-hlp bst victim)
+        (= 0 (compare (:value bst) victim)) (dlt-hlp bst victim)
         :else (if (nil? (my-del2 (:left bst) victim)) (BNode. (:left bst) (:key bst) (:value bst) (my-del2 (:right bst) victim)) (BNode. (my-del2 (:left bst) victim) (:key bst) (:value bst) (:right bst)))
         ))
 
+(defn dl-size
+  [bst victim]
+  (cond (nil? bst) 0
+        (= 0 (compare (:key bst) victim)) 1
+        (> 0 (compare (:key bst) victim)) (dl-size (:right bst) victim)
+        :else (dl-size (:left bst) victim)
+        ))
+
+(defn dl-size2
+  [bst victim]
+  (cond (nil? bst) 0
+        (= 0 (compare (:value bst) victim)) 1
+        :else (if (= 0 (dl-size2 (:left bst) victim)) (dl-size2 (:right bst) victim) (dl-size2 (:left bst) victim))
+        )
+  )
+
 (defn delete [bst victim]
-  (BST. (my-del (:root bst) victim) (- (:size bst) 1))
+  (BST. (my-del (:root bst) victim) (- (:size bst) (dl-size bst victim)))
   )
 
 (defn delete-value [bst victim]
-  (BST. (my-del2 (:root bst) victim) (- (:size bst) 1))
+  (BST. (my-del2 (:root bst) victim) (- (:size bst) (dl-size2 bst victim)))
   )
 
 ;; # Map Tree

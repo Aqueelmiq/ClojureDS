@@ -12,7 +12,7 @@
                )
          (fact "add function increments the size properly"
                (:size (add bt1 3 17)) => 2
-               (:size (add bt1 1 11)) => 2)))
+               (:size (add bt1 1 11)) => 1)))
 
 (facts "About find and find-value function"
        (let [bt1 (BST. (make-node 1 10) 1)
@@ -37,9 +37,9 @@
                (:key (:left (:root (delete bt2 2)))) => -1
                (:key (:right (:root (delete bt2 1)))) => 2)
          (fact "delete decrements properly"
-               (:size (delete bt2 1)) => 2
-               (:size (delete bt2 100)) => 2
-               (:size (delete bt2 -1)) => 2)
+               (:size (delete bt2 1)) => 3
+               (:size (delete bt2 100)) => 3
+               (:size (delete bt2 -1)) => 3)
          (fact "delete-value correctly deletes an element"
                (:key (:root (delete-value bt2 10))) => -1
                (:key (:root (delete-value bt2 20))) => 1
@@ -48,9 +48,9 @@
                (:key (:left (:root (delete-value bt2 10)))) => nil
                (:key (:right (:root (delete-value bt2 20)))) => 2)
          (fact "delete-value decrements properly"
-               (:size (delete-value bt2 10)) => 2
-               (:size (delete-value bt2 100)) => 2
-               (:size (delete-value bt2 39)) => 2)))
+               (:size (delete-value bt2 10)) => 3
+               (:size (delete-value bt2 100)) => 3
+               (:size (delete-value bt2 39)) => 3)))
 
 (facts "About map function function"
        (let [bt1 (BST. (make-node 1 10) 1)
