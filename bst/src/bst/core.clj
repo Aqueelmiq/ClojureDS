@@ -142,11 +142,11 @@
   )
 
 (defn delete [bst victim]
-  (BST. (my-del (:root bst) victim) (- (:size bst) (dl-size bst victim)))
+  (BST. (my-del (:root bst) victim) (- (:size bst) (dl-size (:root bst) victim)))
   )
 
 (defn delete-value [bst victim]
-  (BST. (my-del2 (:root bst) victim) (- (:size bst) (dl-size2 bst victim)))
+  (BST. (my-del2 (:root bst) victim) (- (:size bst) (dl-size2 (:root bst) victim)))
   )
 
 ;; # Map Tree

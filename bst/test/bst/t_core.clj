@@ -37,9 +37,9 @@
                (:key (:left (:root (delete bt2 2)))) => -1
                (:key (:right (:root (delete bt2 1)))) => 2)
          (fact "delete decrements properly"
-               (:size (delete bt2 1)) => 3
+               (:size (delete bt2 1)) => 2
                (:size (delete bt2 100)) => 3
-               (:size (delete bt2 -1)) => 3)
+               (:size (delete bt2 -1)) => 2)
          (fact "delete-value correctly deletes an element"
                (:key (:root (delete-value bt2 10))) => -1
                (:key (:root (delete-value bt2 20))) => 1
@@ -48,9 +48,9 @@
                (:key (:left (:root (delete-value bt2 10)))) => nil
                (:key (:right (:root (delete-value bt2 20)))) => 2)
          (fact "delete-value decrements properly"
-               (:size (delete-value bt2 10)) => 3
+               (:size (delete-value bt2 10)) => 2
                (:size (delete-value bt2 100)) => 3
-               (:size (delete-value bt2 39)) => 3)))
+               (:size (delete-value bt2 39)) => 2)))
 
 (facts "About map function function"
        (let [bt1 (BST. (make-node 1 10) 1)
