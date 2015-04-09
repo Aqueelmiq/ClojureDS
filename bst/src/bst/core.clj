@@ -26,6 +26,11 @@
   (:size t)
   )
 
+ (defn get-root "Returns bst root from BST"
+   [bst]
+   (:root bst)
+   )
+
 ;; # Add
 ;;
 ;; The nodes will be entered into the tree on the basis of their key.
@@ -51,30 +56,60 @@
 ;; version of the function must search the entire tree!  If the search item is not
 ;; there, return nil.
 
-
-(defn find "Look for a key and return the corresponding value."
+(defn find-hlp
   [bst look-key]
   (cond (nil? bst) nil
         (= (:key bst) look-key) (:value bst)
-        (< (:key bst) look-key) (find (:right bst) look-key)
-        :else (find (:left bst) look-key)))
+        (< (:key bst) look-key) (find-hlp (:right bst) look-key)
+        :else (find-hlp (:left bst) look-key)))
 
-(defn find-key "Look for a value and return the corresponding key."
+(defn find-hlp2
   [bst look-value]
   (cond (nil? bst) nil
         (= (:value bst) look-value) (:key bst)
-        :else (do (find-key (:left bst) look-value) (find-key (:right bst) look-value))))
+        :else (if (nil? (find-hlp2 (:left bst) look-value)) (find-hlp2 (:right bst) look-value) (find-hlp2 (:left bst) look-value))
+        ))
 
+(defn find "Look for a key and return the corresponding value."
+  [bt look-key]
+  (find-hlp (:root bt) look-key)
+  )
+
+(defn find-key "Look for a value and return the corresponding key."
+  [bt look-value]
+  (find-hlp2 (:root bt) look-value)
+  )
 ;; # Delete
 ;;
 ;; Similiarly, we have two versions of delete.  Please use the predecessor node if
 ;; you need to delete a child with two elements.
 
+(defn my-del
+  [bst victim]
+  (cond (nil? bst) nil
+        (= (:key bst) victim) (dlt-hlp bst victim)
+        (< (:key bst) victim) (BNode. (:left bst) (:key bst) (:value bst) (my-del (:right bst) victim))
+        :else (BNode. (my-del (:left bst) victim) (:key bst) (:value bst) (:right bst))))
+
+(defn my-del2
+  [bst victim]
+  (cond (nil? bst) nil
+        (= (:value bst) victim) (dlt-hlp bst victim)
+        :else (if (nil? (my-del2 (:left bst) victim)) (BNode. (:left bst) (:key bst) (:value bst) (my-del2 (:right bst) victim)) (BNode. (my-del2 (:left bst) victim) (:key bst) (:value bst) (:right bst)))
+        ))
+
 (defn predec
   [bst victim]
   (cond (nil? (:right bst)) bst
-        (< (:value bst) victim) (predec (:right bst) victim)
+        (< (:key bst) victim) (predec (:right bst) victim)
         :else bst
+        ))
+
+(defn pr-help
+  [bst victim]
+  (cond (nil? (:right bst)) nil
+        (< (:key bst) victim) (BNode. (:left bst) (:key bst) (:value bst) (pr-help (:right bst) victim))
+        :else nil
         ))
 
 (defn dlt-hlp
@@ -82,20 +117,16 @@
   (cond (and (nil? (:left bst)) (nil? (:right bst))) nil
         (nil? (:left bst)) (:right bst)
         (nil? (:right bst)) (:left bst)
-        :else (predec (:left bst) value)))
+        :else (BNode. (pr-help (:left bst) value) (:key (predec (:left bst) value)) (:value (predec (:left bst) value)) (:right bst))
+        ))
 
 (defn delete [bst victim]
-  (cond (nil? bst) nil
-        (= (:key bst) victim) (dlt-hlp bst victim)
-        :else (do (delete (:left bst)) (delete (:right bst) victim))
-        ))
+  (BST. (my-del (:root bst) victim) (- (:size bst) 1))
+  )
 
 (defn delete-value [bst victim]
-  (cond (nil? bst) nil
-        (= (:value bst) victim) (dlt-hlp bst victim)
-        (< (:value bst) victim) (delete (:left bst) victim)
-        :else (delete (:right bst) victim)
-        ))
+  (BST. (my-del2 (:root bst) victim) (- (:size bst) 1))
+  )
 
 ;; # Map Tree
 ;;
@@ -103,7 +134,15 @@
 ;; If your tree is ((x 3 x) 5 ((x 7 x) 6 x)), then (map-tree t inc)
 ;; will return ((x 4 x) 6 ((x 8 x) 7 x))
 
-(defn map-tree
+(defn my-map
   [t f]
   (cond (nil? t) nil
-        :else (BNode. (map-tree (:left t)) (:key t) (f (:data t)) (map-tree (:right t)))))
+        (and (nil? (:left t)) (nil? (:right t))) (BNode. nil (:key t) (f (:value t)) nil)
+        (nil? (:left t)) (BNode. nil (:key t) (f (:value t)) (my-map (:right t) f))
+        (nil? (:right t)) (BNode. (my-map (:left t) f) (:key t) (f (:value t)) nil)
+        :else (BNode. (my-map (:left t) f) (:key t) (f (:value t)) (my-map (:right t) f))))
+
+(defn map-tree
+  [t f]
+  (BST. (my-map (:root t) f) (:size t))
+  )
