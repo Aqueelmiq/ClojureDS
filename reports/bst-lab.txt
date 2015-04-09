@@ -1,12 +1,21 @@
 Lab report for BST Lab - amiqdad
-Timestamp: 2015-04-08 22:06:16
+Timestamp: 2015-04-08 23:48:04
 
-|  :scenario |                                :title |                   :result | :score |
-|------------+---------------------------------------+---------------------------+--------|
-|    working | Test student code vs instructor tests |                           |        |
-| qualifying | Test student tests vs instructor code |                      Fail |      4 |
-| qualifying |           Qualifying Scenarios Failed | No further scenarios run. |      0 |
-|      total |                           Total Score |                           |      4 |
+|  :scenario |                                                    :title |                                   :result | :score |
+|------------+-----------------------------------------------------------+-------------------------------------------+--------|
+|    working |                     Test student code vs instructor tests |                                      Fail |     33 |
+| qualifying |                     Test student tests vs instructor code |                                      Pass |      5 |
+|    broke-1 |                               Add doesn't increment size. |      Pass: student tests detected errors. |      5 |
+|    broke-2 |                                 Add swaps left and right. |      Pass: student tests detected errors. |      5 |
+|    broke-3 |                                    Find only checks left. |      Pass: student tests detected errors. |      5 |
+|    broke-4 | Two child delete copies predecessor instead of moving it. |      Pass: student tests detected errors. |      5 |
+|    broke-5 |                        Map tree does keys and not values. |      Pass: student tests detected errors. |      5 |
+|    broke-6 |                          Delete decrements size too much. |      Pass: student tests detected errors. |      5 |
+|    broke-7 |                                Delete truncates subtrees. | Fail: Student tests did not detect error. |      0 |
+|    broke-8 |                         Delete value doesn't always work. | Fail: Student tests did not detect error. |      0 |
+|    broke-9 |                    Delete value decrements size too much. |      Pass: student tests detected errors. |      5 |
+|   broke-10 |                   Add sometimes increments size too much. |      Pass: student tests detected errors. |      5 |
+|      total |                                               Total Score |                                           |     78 |
 
 Details:
 
@@ -15,62 +24,83 @@ Details:
 
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.t_core, being replaced by: #'bst.core/find
-Exception in thread "main" java.lang.ClassCastException: clojure.lang.Symbol cannot be cast to java.lang.Number, compiling:(t_core.clj:22:20)
-	at clojure.lang.Compiler$InvokeExpr.eval(Compiler.java:3463)
-	at clojure.lang.Compiler$DefExpr.eval(Compiler.java:408)
-	at clojure.lang.Compiler.eval(Compiler.java:6624)
-	at clojure.lang.Compiler.load(Compiler.java:7064)
-	at clojure.lang.RT.loadResourceScript(RT.java:370)
-	at clojure.lang.RT.loadResourceScript(RT.java:361)
-	at clojure.lang.RT.load(RT.java:440)
-	at clojure.lang.RT.load(RT.java:411)
-	at clojure.core$load$fn__5018.invoke(core.clj:5530)
-	at clojure.core$load.doInvoke(core.clj:5529)
-	at clojure.lang.RestFn.invoke(RestFn.java:408)
-	at clojure.core$load_one.invoke(core.clj:5336)
-	at clojure.core$load_lib$fn__4967.invoke(core.clj:5375)
-	at clojure.core$load_lib.doInvoke(core.clj:5374)
-	at clojure.lang.RestFn.applyTo(RestFn.java:142)
-	at clojure.core$apply.invoke(core.clj:619)
-	at clojure.core$load_libs.doInvoke(core.clj:5413)
-	at clojure.lang.RestFn.applyTo(RestFn.java:137)
-	at clojure.core$apply.invoke(core.clj:619)
-	at clojure.core$require.doInvoke(core.clj:5496)
-	at clojure.lang.RestFn.invoke(RestFn.java:421)
-	at midje.repl$load_facts$fn__6189.invoke(repl.clj:206)
-	at midje.repl$load_facts.doInvoke(repl.clj:192)
-	at clojure.lang.RestFn.invoke(RestFn.java:397)
-	at user$eval6251.invoke(form-init6963084082719059023.clj:1)
-	at clojure.lang.Compiler.eval(Compiler.java:6619)
-	at clojure.lang.Compiler.eval(Compiler.java:6609)
-	at clojure.lang.Compiler.load(Compiler.java:7064)
-	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
-	at clojure.main$load_script.invoke(main.clj:294)
-	at clojure.main$init_opt.invoke(main.clj:299)
-	at clojure.main$initialize.invoke(main.clj:327)
-	at clojure.main$null_opt.invoke(main.clj:362)
-	at clojure.main$main.doInvoke(main.clj:440)
-	at clojure.lang.RestFn.invoke(RestFn.java:421)
-	at clojure.lang.Var.invoke(Var.java:419)
-	at clojure.lang.AFn.applyToHelper(AFn.java:163)
-	at clojure.lang.Var.applyTo(Var.java:532)
-	at clojure.main.main(main.java:37)
-Caused by: java.lang.ClassCastException: clojure.lang.Symbol cannot be cast to java.lang.Number
-	at clojure.lang.Numbers.gt(Numbers.java:227)
-	at bst.core$add_helper.invoke(core.clj:43)
-	at bst.core$add.invoke(core.clj:49)
-	at bst.t_core$list_to_tree$fn__6348.invoke(t_core.clj:19)
-	at clojure.core.protocols$fn__6034.invoke(protocols.clj:143)
-	at clojure.core.protocols$fn__6005$G__6000__6014.invoke(protocols.clj:19)
-	at clojure.core.protocols$seq_reduce.invoke(protocols.clj:31)
-	at clojure.core.protocols$fn__6026.invoke(protocols.clj:54)
-	at clojure.core.protocols$fn__5979$G__5974__5992.invoke(protocols.clj:13)
-	at clojure.core$reduce.invoke(core.clj:6177)
-	at bst.t_core$list_to_tree.invoke(t_core.clj:20)
-	at clojure.lang.AFn.applyToHelper(AFn.java:161)
-	at clojure.lang.AFn.applyTo(AFn.java:151)
-	at clojure.lang.Compiler$InvokeExpr.eval(Compiler.java:3458)
-	... 38 more
+
+FAIL "Delete - Deletes two-child nodes." at (t_core.clj:146)
+    Expected: ([g 1] ([c 5] ([a 6] nil ([b 7] nil nil)) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+      Actual: ([g 1] ([c 5] nil ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+
+FAIL "Delete - Deletes two-child nodes." at (t_core.clj:153)
+    Expected: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([k 9] ([j 10] nil nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+      Actual: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([k 9] nil ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+
+FAIL "Delete - Deletes two-child nodes." at (t_core.clj:159)
+    Expected: ([f 3] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([e 4] nil nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+      Actual: ([f 3] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) nil) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+
+FAIL "Delete-value - Delete-Values leaf nodes." at (t_core.clj:176)
+    Expected: ([d 1] ([b 2] nil ([c 5] nil nil)) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
+      Actual: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
+
+FAIL "Delete-value - Delete-Values leaf nodes." at (t_core.clj:181)
+    Expected: ([d 1] ([b 2] ([a 4] nil nil) nil) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
+      Actual: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
+
+FAIL "Delete-value - Delete-Values leaf nodes." at (t_core.clj:185)
+    Expected: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] nil ([g 7] nil nil)))
+      Actual: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
+
+FAIL "Delete-value - Delete-Values leaf nodes." at (t_core.clj:189)
+    Expected: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] ([e 6] nil nil) nil))
+      Actual: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
+
+FAIL "Delete-value - Delete-Values one-child nodes." at (t_core.clj:212)
+    Expected: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([e 4] nil nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+      Actual: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+
+FAIL "Delete-value - Delete-Values one-child nodes." at (t_core.clj:218)
+    Expected: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([j 10] nil nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+      Actual: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+
+FAIL "Delete-value - Delete-Values one-child nodes." at (t_core.clj:224)
+    Expected: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([o 13] nil nil))))
+      Actual: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+
+FAIL "Delete-value - Delete-Values two-child nodes." at (t_core.clj:231)
+    Expected: ([g 1] ([c 5] ([a 6] nil ([b 7] nil nil)) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+      Actual: ([g 1] ([c 5] nil ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+
+FAIL "Delete-value - Delete-Values two-child nodes." at (t_core.clj:238)
+    Expected: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([k 9] ([j 10] nil nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+      Actual: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+
+FAIL "Delete-value - Delete-Values two-child nodes." at (t_core.clj:244)
+    Expected: ([f 3] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([e 4] nil nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
+      Actual: java.lang.ClassCastException: java.lang.Long cannot be cast to clojure.lang.Symbol
+              bst.core$pr_help.invoke(core.clj:104)
+              bst.core$dlt_hlp.invoke(core.clj:112)
+              bst.core$my_del2.invoke(core.clj:124)
+              bst.core$delete_value.invoke(core.clj:149)
+              bst.t_core$eval6613$base_function__5041__auto____6614$fn__6615$base_function__5041__auto____6654$fn__6655$fn__6660.invoke(t_core.clj:244)
+              bst.t_core$eval6613$base_function__5041__auto____6614$fn__6615$base_function__5041__auto____6654$fn__6655.invoke(t_core.clj:172)
+              bst.t_core$eval6613$base_function__5041__auto____6614$fn__6615$base_function__5041__auto____6654.invoke(t_core.clj:172)
+              bst.t_core$eval6613$base_function__5041__auto____6614$fn__6615.invoke(t_core.clj:172)
+              bst.t_core$eval6613$base_function__5041__auto____6614.invoke(t_core.clj:172)
+              bst.t_core$eval6613.invoke(t_core.clj:172)
+
+FAIL "Delete-value - Delete-Values two-child nodes." at (t_core.clj:251)
+    Expected: ([c 5] ([b 2] ([a 4] nil nil) nil) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
+      Actual: java.lang.ClassCastException: java.lang.Long cannot be cast to clojure.lang.Symbol
+              bst.core$pr_help.invoke(core.clj:104)
+              bst.core$dlt_hlp.invoke(core.clj:112)
+              bst.core$my_del2.invoke(core.clj:124)
+              bst.core$delete_value.invoke(core.clj:149)
+              bst.t_core$eval6613$base_function__5041__auto____6614$fn__6615$base_function__5041__auto____6654$fn__6655$fn__6662.invoke(t_core.clj:251)
+              bst.t_core$eval6613$base_function__5041__auto____6614$fn__6615$base_function__5041__auto____6654$fn__6655.invoke(t_core.clj:172)
+              bst.t_core$eval6613$base_function__5041__auto____6614$fn__6615$base_function__5041__auto____6654.invoke(t_core.clj:172)
+              bst.t_core$eval6613$base_function__5041__auto____6614$fn__6615.invoke(t_core.clj:172)
+              bst.t_core$eval6613$base_function__5041__auto____6614.invoke(t_core.clj:172)
+              bst.t_core$eval6613.invoke(t_core.clj:172)
+FAILURE: 14 checks failed.  (But 41 succeeded.)
 Subprocess failed
 
 
@@ -78,9 +108,214 @@ Subprocess failed
 
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
+All checks (33) succeeded.
+
+
+** Details for Add doesn't increment size.
+
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
+
+FAIL "About add function - add function increments the size properly" at (t_core.clj:14)
+    Expected: 2
+      Actual: 1
+
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:40)
+    Expected: 2
+      Actual: 0
+
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:41)
+    Expected: 3
+      Actual: 1
+
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:42)
+    Expected: 2
+      Actual: 0
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:51)
+    Expected: 2
+      Actual: 0
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:52)
+    Expected: 3
+      Actual: 1
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:53)
+    Expected: 2
+      Actual: 0
+FAILURE: 7 checks failed.  (But 26 succeeded.)
+Subprocess failed
+
+
+** Details for Add swaps left and right.
+
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
 
 FAIL "About add function - add function correctly adds an element" at (t_core.clj:9)
     Expected: 20
       Actual: nil
+
+FAIL "About add function - add function correctly adds an element" at (t_core.clj:10)
+    Expected: 30
+      Actual: nil
+
+FAIL "About find and find-value function - find function correctly finds an element" at (t_core.clj:21)
+    Expected: 20
+      Actual: nil
+
+FAIL "About find and find-value function - find function correctly finds an element" at (t_core.clj:23)
+    Expected: 39
+      Actual: nil
+
+FAIL "About delete and delete-value function - delete correctly deletes an element" at (t_core.clj:33)
+    Expected: -1
+      Actual: 2
+
+FAIL "About delete and delete-value function - delete correctly deletes an element" at (t_core.clj:37)
+    Expected: -1
+      Actual: 2
+
+FAIL "About delete and delete-value function - delete correctly deletes an element" at (t_core.clj:38)
+    Expected: 2
+      Actual: -1
+
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:42)
+    Expected: 2
+      Actual: 3
+
+FAIL "About delete and delete-value function - delete-value correctly deletes an element" at (t_core.clj:44)
+    Expected: -1
+      Actual: 2
+
+FAIL "About delete and delete-value function - delete-value correctly deletes an element" at (t_core.clj:49)
+    Expected: 2
+      Actual: nil
+
+FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:60)
+    Expected: 21
+      Actual: 40
+
+FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:61)
+    Expected: 40
+      Actual: 21
+FAILURE: 12 checks failed.  (But 21 succeeded.)
+Subprocess failed
+
+
+** Details for Find only checks left.
+
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
+
+FAIL "About find and find-value function - find function correctly finds an element" at (t_core.clj:23)
+    Expected: 39
+      Actual: nil
 FAILURE: 1 check failed.  (But 32 succeeded.)
+Subprocess failed
+
+
+** Details for Two child delete copies predecessor instead of moving it.
+
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
+
+FAIL "About delete and delete-value function - delete-value correctly deletes an element" at (t_core.clj:48)
+    Expected: nil
+      Actual: -1
+FAILURE: 1 check failed.  (But 32 succeeded.)
+Subprocess failed
+
+
+** Details for Map tree does keys and not values.
+
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
+
+FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:60)
+    Expected: 21
+      Actual: 20
+
+FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:61)
+    Expected: 40
+      Actual: 39
+
+FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:62)
+    Expected: 11
+      Actual: 10
+FAILURE: 3 checks failed.  (But 30 succeeded.)
+Subprocess failed
+
+
+** Details for Delete decrements size too much.
+
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
+
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:41)
+    Expected: 3
+      Actual: 2
+FAILURE: 1 check failed.  (But 32 succeeded.)
+Subprocess failed
+
+
+** Details for Delete truncates subtrees.
+
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
+All checks (33) succeeded.
+
+
+** Details for Delete value doesn't always work.
+
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
+All checks (33) succeeded.
+
+
+** Details for Delete value decrements size too much.
+
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:52)
+    Expected: 3
+      Actual: 2
+FAILURE: 1 check failed.  (But 32 succeeded.)
+Subprocess failed
+
+
+** Details for Add sometimes increments size too much.
+
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
+WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
+
+FAIL "About add function - add function increments the size properly" at (t_core.clj:14)
+    Expected: 2
+      Actual: 3
+
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:40)
+    Expected: 2
+      Actual: 3
+
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:41)
+    Expected: 3
+      Actual: 4
+
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:42)
+    Expected: 2
+      Actual: 3
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:51)
+    Expected: 2
+      Actual: 3
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:52)
+    Expected: 3
+      Actual: 4
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:53)
+    Expected: 2
+      Actual: 3
+FAILURE: 7 checks failed.  (But 26 succeeded.)
 Subprocess failed
