@@ -84,6 +84,25 @@
 ;; Similiarly, we have two versions of delete.  Please use the predecessor node if
 ;; you need to delete a child with two elements.
 
+(defn predec
+  [bst victim]
+  (cond (nil? (:right bst)) bst
+        (< (:key bst) victim) (predec (:right bst) victim)
+        :else bst))
+
+(defn pr-help
+  [bst victim]
+  (cond (nil? (:right bst)) nil
+        (< (:key bst) victim) (BNode. (:left bst) (:key bst) (:value bst) (pr-help (:right bst) victim))
+        :else nil))
+
+(defn dlt-hlp
+  [bst value]
+  (cond (and (nil? (:left bst)) (nil? (:right bst))) nil
+        (nil? (:left bst)) (:right bst)
+        (nil? (:right bst)) (:left bst)
+        :else (BNode. (pr-help (:left bst) value) (:key (predec (:left bst) value)) (:value (predec (:left bst) value)) (:right bst))))
+
 (defn my-del
   [bst victim]
   (cond (nil? bst) nil
@@ -96,28 +115,6 @@
   (cond (nil? bst) nil
         (= (:value bst) victim) (dlt-hlp bst victim)
         :else (if (nil? (my-del2 (:left bst) victim)) (BNode. (:left bst) (:key bst) (:value bst) (my-del2 (:right bst) victim)) (BNode. (my-del2 (:left bst) victim) (:key bst) (:value bst) (:right bst)))
-        ))
-
-(defn predec
-  [bst victim]
-  (cond (nil? (:right bst)) bst
-        (< (:key bst) victim) (predec (:right bst) victim)
-        :else bst
-        ))
-
-(defn pr-help
-  [bst victim]
-  (cond (nil? (:right bst)) nil
-        (< (:key bst) victim) (BNode. (:left bst) (:key bst) (:value bst) (pr-help (:right bst) victim))
-        :else nil
-        ))
-
-(defn dlt-hlp
-  [bst value]
-  (cond (and (nil? (:left bst)) (nil? (:right bst))) nil
-        (nil? (:left bst)) (:right bst)
-        (nil? (:right bst)) (:left bst)
-        :else (BNode. (pr-help (:left bst) value) (:key (predec (:left bst) value)) (:value (predec (:left bst) value)) (:right bst))
         ))
 
 (defn delete [bst victim]
