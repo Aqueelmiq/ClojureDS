@@ -39,7 +39,7 @@
 (defn add-helper
   [bt nu-key nu-val]
   (cond (nil? bt) (BNode. nil nu-key nu-val nil)
-        (= (:key bt) nu-key) (BNode. (:left bt) (nu-key) (nu-val) (:right bt))
+        (= (:key bt) nu-key) (BNode. (:left bt) (:key bt) nu-val (:right bt))
         (> (:key bt) nu-key) (BNode. (add-helper (:left bt) nu-key nu-val) (:key bt) (:value bt) (:right bt)) 
         :else (BNode. (:left bt) (:key bt) (:value bt) (add-helper (:right bt) nu-key nu-val))
         ))
