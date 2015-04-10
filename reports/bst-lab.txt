@@ -1,9 +1,9 @@
 Lab report for BST Lab - amiqdad
-Timestamp: 2015-04-10 15:43:19
+Timestamp: 2015-04-10 17:08:41
 
 |  :scenario |                                                    :title |                                   :result | :score |
 |------------+-----------------------------------------------------------+-------------------------------------------+--------|
-|    working |                     Test student code vs instructor tests |                                      Fail |     38 |
+|    working |                     Test student code vs instructor tests |                                      Pass |     45 |
 | qualifying |                     Test student tests vs instructor code |                                      Pass |      5 |
 |    broke-1 |                               Add doesn't increment size. |      Pass: student tests detected errors. |      5 |
 |    broke-2 |                                 Add swaps left and right. |      Pass: student tests detected errors. |      5 |
@@ -15,7 +15,7 @@ Timestamp: 2015-04-10 15:43:19
 |    broke-8 |                         Delete value doesn't always work. | Fail: Student tests did not detect error. |      0 |
 |    broke-9 |                    Delete value decrements size too much. |      Pass: student tests detected errors. |      5 |
 |   broke-10 |                   Add sometimes increments size too much. |      Pass: student tests detected errors. |      5 |
-|      total |                                               Total Score |                                           |     83 |
+|      total |                                               Total Score |                                           |     90 |
 
 Details:
 
@@ -24,40 +24,7 @@ Details:
 
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.t_core, being replaced by: #'bst.core/find
-
-FAIL "Delete-value - Delete-Values leaf nodes." at (t_core.clj:176)
-    Expected: ([d 1] ([b 2] nil ([c 5] nil nil)) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
-      Actual: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
-
-FAIL "Delete-value - Delete-Values leaf nodes." at (t_core.clj:181)
-    Expected: ([d 1] ([b 2] ([a 4] nil nil) nil) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
-      Actual: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
-
-FAIL "Delete-value - Delete-Values leaf nodes." at (t_core.clj:185)
-    Expected: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] nil ([g 7] nil nil)))
-      Actual: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
-
-FAIL "Delete-value - Delete-Values leaf nodes." at (t_core.clj:189)
-    Expected: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] ([e 6] nil nil) nil))
-      Actual: ([d 1] ([b 2] ([a 4] nil nil) ([c 5] nil nil)) ([f 3] ([e 6] nil nil) ([g 7] nil nil)))
-
-FAIL "Delete-value - Delete-Values one-child nodes." at (t_core.clj:212)
-    Expected: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([e 4] nil nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
-      Actual: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
-
-FAIL "Delete-value - Delete-Values one-child nodes." at (t_core.clj:218)
-    Expected: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([j 10] nil nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
-      Actual: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
-
-FAIL "Delete-value - Delete-Values one-child nodes." at (t_core.clj:224)
-    Expected: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([o 13] nil nil))))
-      Actual: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
-
-FAIL "Delete-value - Delete-Values two-child nodes." at (t_core.clj:238)
-    Expected: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([k 9] ([j 10] nil nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
-      Actual: ([g 1] ([d 2] ([c 5] ([a 6] nil ([b 7] nil nil)) nil) ([f 3] ([e 4] nil nil) nil)) ([l 8] ([k 9] ([j 10] nil nil) nil) ([m 11] nil ([n 12] nil ([o 13] nil nil)))))
-FAILURE: 8 checks failed.  (But 47 succeeded.)
-Subprocess failed
+All checks (55) succeeded.
 
 
 ** Details for Test student tests vs instructor code
