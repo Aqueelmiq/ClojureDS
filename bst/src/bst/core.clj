@@ -114,17 +114,18 @@
      ))
   )
 
-(defn predec
+(defn dl-size
   [bst victim]
-  (cond (nil? (:right bst)) bst
-        (> 0 (compare (:key bst) victim)) (predec (:right bst) victim)
-        :else bst))
+  (cond (nil? bst) 0
+        (= 0 (compare (:key bst) victim)) 1
+        (> 0 (compare (:key bst) victim)) (dl-size (:right bst) victim)
+        :else (dl-size (:left bst) victim)))
 
-(defn pr-help
+(defn dl-size2
   [bst victim]
-  (cond (nil? (:right bst)) nil
-        (> 0 (compare (:key bst) victim)) (BNode. (:left bst) (:key bst) (:value bst) (pr-help (:right bst) victim))
-        :else nil))
+  (cond (nil? bst) 0
+        (= 0 (compare (:value bst) victim)) 1
+        :else (if (= 0 (dl-size2 (:left bst) victim)) (dl-size2 (:right bst) victim) (dl-size2 (:left bst) victim))))
 
 (defn dlt-hlp
   [bst value]
@@ -144,24 +145,8 @@
   [bst victim]
   (cond (nil? bst) nil
         (= 0 (compare (:value bst) victim)) (dlt-hlp bst victim)
-        :else (if (nil? (my-del2 (:left bst) victim)) (BNode. (:left bst) (:key bst) (:value bst) (my-del2 (:right bst) victim)) (BNode. (my-del2 (:left bst) victim) (:key bst) (:value bst) (:right bst)))
+        :else (if (= 0 (dl-size2 (:left bst) victim)) (BNode. (:left bst) (:key bst) (:value bst) (my-del2 (:right bst) victim)) (BNode. (my-del2 (:left bst) victim) (:key bst) (:value bst) (:right bst)))
         ))
-
-(defn dl-size
-  [bst victim]
-  (cond (nil? bst) 0
-        (= 0 (compare (:key bst) victim)) 1
-        (> 0 (compare (:key bst) victim)) (dl-size (:right bst) victim)
-        :else (dl-size (:left bst) victim)
-        ))
-
-(defn dl-size2
-  [bst victim]
-  (cond (nil? bst) 0
-        (= 0 (compare (:value bst) victim)) 1
-        :else (if (= 0 (dl-size2 (:left bst) victim)) (dl-size2 (:right bst) victim) (dl-size2 (:left bst) victim))
-        )
-  )
 
 (defn delete [bst victim]
   (BST. (my-del (:root bst) victim) (- (:size bst) (dl-size (:root bst) victim)))
