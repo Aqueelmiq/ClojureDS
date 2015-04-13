@@ -1,5 +1,5 @@
 Lab report for BST Lab - amiqdad
-Timestamp: 2015-04-10 17:08:41
+Timestamp: 2015-04-12 22:58:43
 
 |  :scenario |                                                    :title |                                   :result | :score |
 |------------+-----------------------------------------------------------+-------------------------------------------+--------|
@@ -8,14 +8,14 @@ Timestamp: 2015-04-10 17:08:41
 |    broke-1 |                               Add doesn't increment size. |      Pass: student tests detected errors. |      5 |
 |    broke-2 |                                 Add swaps left and right. |      Pass: student tests detected errors. |      5 |
 |    broke-3 |                                    Find only checks left. |      Pass: student tests detected errors. |      5 |
-|    broke-4 | Two child delete copies predecessor instead of moving it. |      Pass: student tests detected errors. |      5 |
+|    broke-4 | Two child delete copies predecessor instead of moving it. | Fail: Student tests did not detect error. |      0 |
 |    broke-5 |                        Map tree does keys and not values. |      Pass: student tests detected errors. |      5 |
 |    broke-6 |                          Delete decrements size too much. |      Pass: student tests detected errors. |      5 |
-|    broke-7 |                                Delete truncates subtrees. | Fail: Student tests did not detect error. |      0 |
-|    broke-8 |                         Delete value doesn't always work. | Fail: Student tests did not detect error. |      0 |
+|    broke-7 |                                Delete truncates subtrees. |      Pass: student tests detected errors. |      5 |
+|    broke-8 |                         Delete value doesn't always work. |      Pass: student tests detected errors. |      5 |
 |    broke-9 |                    Delete value decrements size too much. |      Pass: student tests detected errors. |      5 |
 |   broke-10 |                   Add sometimes increments size too much. |      Pass: student tests detected errors. |      5 |
-|      total |                                               Total Score |                                           |     90 |
+|      total |                                               Total Score |                                           |     95 |
 
 Details:
 
@@ -31,7 +31,7 @@ All checks (55) succeeded.
 
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
-All checks (33) succeeded.
+All checks (45) succeeded.
 
 
 ** Details for Add doesn't increment size.
@@ -43,30 +43,30 @@ FAIL "About add function - add function increments the size properly" at (t_core
     Expected: 2
       Actual: 1
 
-FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:40)
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:41)
     Expected: 2
       Actual: 0
-
-FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:41)
-    Expected: 3
-      Actual: 1
 
 FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:42)
-    Expected: 2
-      Actual: 0
-
-FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:51)
-    Expected: 2
-      Actual: 0
-
-FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:52)
     Expected: 3
       Actual: 1
 
-FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:53)
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:43)
     Expected: 2
       Actual: 0
-FAILURE: 7 checks failed.  (But 26 succeeded.)
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:66)
+    Expected: 2
+      Actual: 0
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:67)
+    Expected: 3
+      Actual: 1
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:68)
+    Expected: 2
+      Actual: 0
+FAILURE: 7 checks failed.  (But 38 succeeded.)
 Subprocess failed
 
 
@@ -91,38 +91,58 @@ FAIL "About find and find-value function - find function correctly finds an elem
     Expected: 39
       Actual: nil
 
-FAIL "About delete and delete-value function - delete correctly deletes an element" at (t_core.clj:33)
-    Expected: -1
-      Actual: 2
-
-FAIL "About delete and delete-value function - delete correctly deletes an element" at (t_core.clj:37)
-    Expected: -1
-      Actual: 2
-
 FAIL "About delete and delete-value function - delete correctly deletes an element" at (t_core.clj:38)
-    Expected: 2
-      Actual: -1
-
-FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:42)
-    Expected: 2
-      Actual: 3
-
-FAIL "About delete and delete-value function - delete-value correctly deletes an element" at (t_core.clj:44)
     Expected: -1
-      Actual: 2
+      Actual: nil
 
-FAIL "About delete and delete-value function - delete-value correctly deletes an element" at (t_core.clj:49)
+FAIL "About delete and delete-value function - delete correctly deletes an element" at (t_core.clj:39)
     Expected: 2
       Actual: nil
 
-FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:60)
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:43)
+    Expected: 2
+      Actual: 3
+
+FAIL "About delete and delete-value function - delete is not good with many nodes" at (t_core.clj:45)
+    Expected: 11
+      Actual: 22
+
+FAIL "About delete and delete-value function - delete is not good with many nodes" at (t_core.clj:49)
+    Expected: 5
+      Actual: 30
+
+FAIL "About delete and delete-value function - delete is not good with many nodes" at (t_core.clj:50)
+    Expected: 22
+      Actual: 10
+
+FAIL "About delete and delete-value function - delete-value correctly deletes an element" at (t_core.clj:56)
+    Expected: nil
+      Actual: 2
+
+FAIL "About delete and delete-value function - delete-value correctly deletes an element" at (t_core.clj:57)
+    Expected: nil
+      Actual: 2
+
+FAIL "About delete and delete-value function - delete-value is not good with many nodes" at (t_core.clj:59)
+    Expected: 11
+      Actual: 22
+
+FAIL "About delete and delete-value function - delete-value is not good with many nodes" at (t_core.clj:63)
+    Expected: 5
+      Actual: 30
+
+FAIL "About delete and delete-value function - delete-value is not good with many nodes" at (t_core.clj:64)
+    Expected: 22
+      Actual: 10
+
+FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:75)
     Expected: 21
       Actual: 40
 
-FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:61)
+FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:76)
     Expected: 40
       Actual: 21
-FAILURE: 12 checks failed.  (But 21 succeeded.)
+FAILURE: 17 checks failed.  (But 28 succeeded.)
 Subprocess failed
 
 
@@ -134,7 +154,7 @@ WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, b
 FAIL "About find and find-value function - find function correctly finds an element" at (t_core.clj:23)
     Expected: 39
       Actual: nil
-FAILURE: 1 check failed.  (But 32 succeeded.)
+FAILURE: 1 check failed.  (But 44 succeeded.)
 Subprocess failed
 
 
@@ -142,12 +162,7 @@ Subprocess failed
 
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
-
-FAIL "About delete and delete-value function - delete-value correctly deletes an element" at (t_core.clj:48)
-    Expected: nil
-      Actual: -1
-FAILURE: 1 check failed.  (But 32 succeeded.)
-Subprocess failed
+All checks (45) succeeded.
 
 
 ** Details for Map tree does keys and not values.
@@ -155,18 +170,18 @@ Subprocess failed
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
 
-FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:60)
+FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:75)
     Expected: 21
       Actual: 20
 
-FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:61)
+FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:76)
     Expected: 40
       Actual: 39
 
-FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:62)
+FAIL "About map function function - Map tree correctly increments items" at (t_core.clj:77)
     Expected: 11
       Actual: 10
-FAILURE: 3 checks failed.  (But 30 succeeded.)
+FAILURE: 3 checks failed.  (But 42 succeeded.)
 Subprocess failed
 
 
@@ -175,10 +190,10 @@ Subprocess failed
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
 
-FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:41)
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:42)
     Expected: 3
       Actual: 2
-FAILURE: 1 check failed.  (But 32 succeeded.)
+FAILURE: 1 check failed.  (But 44 succeeded.)
 Subprocess failed
 
 
@@ -186,14 +201,32 @@ Subprocess failed
 
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
-All checks (33) succeeded.
+
+FAIL "About delete and delete-value function - delete correctly deletes an element" at (t_core.clj:34)
+    Expected: -1
+      Actual: nil
+
+FAIL "About delete and delete-value function - delete correctly deletes an element" at (t_core.clj:39)
+    Expected: 2
+      Actual: nil
+
+FAIL "About delete and delete-value function - delete-value correctly deletes an element" at (t_core.clj:52)
+    Expected: -1
+      Actual: nil
+FAILURE: 3 checks failed.  (But 42 succeeded.)
+Subprocess failed
 
 
 ** Details for Delete value doesn't always work.
 
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
-All checks (33) succeeded.
+
+FAIL "About delete and delete-value function - delete-value is not good with many nodes" at (t_core.clj:64)
+    Expected: 22
+      Actual: 30
+FAILURE: 1 check failed.  (But 44 succeeded.)
+Subprocess failed
 
 
 ** Details for Delete value decrements size too much.
@@ -201,10 +234,14 @@ All checks (33) succeeded.
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.core, being replaced by: #'bst.core/find
 WARNING: find already refers to: #'clojure.core/find in namespace: bst.t-core, being replaced by: #'bst.core/find
 
-FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:52)
+FAIL "About delete and delete-value function - delete-value is not good with many nodes" at (t_core.clj:64)
+    Expected: 22
+      Actual: 30
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:67)
     Expected: 3
       Actual: 2
-FAILURE: 1 check failed.  (But 32 succeeded.)
+FAILURE: 2 checks failed.  (But 43 succeeded.)
 Subprocess failed
 
 
@@ -217,28 +254,28 @@ FAIL "About add function - add function increments the size properly" at (t_core
     Expected: 2
       Actual: 3
 
-FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:40)
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:41)
     Expected: 2
       Actual: 3
-
-FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:41)
-    Expected: 3
-      Actual: 4
 
 FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:42)
-    Expected: 2
-      Actual: 3
-
-FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:51)
-    Expected: 2
-      Actual: 3
-
-FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:52)
     Expected: 3
       Actual: 4
 
-FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:53)
+FAIL "About delete and delete-value function - delete decrements properly" at (t_core.clj:43)
     Expected: 2
       Actual: 3
-FAILURE: 7 checks failed.  (But 26 succeeded.)
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:66)
+    Expected: 2
+      Actual: 3
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:67)
+    Expected: 3
+      Actual: 4
+
+FAIL "About delete and delete-value function - delete-value decrements properly" at (t_core.clj:68)
+    Expected: 2
+      Actual: 3
+FAILURE: 7 checks failed.  (But 38 succeeded.)
 Subprocess failed
