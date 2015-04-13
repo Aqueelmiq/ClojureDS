@@ -47,7 +47,8 @@
                (:key (:root (delete bt3 30))) => 20
                (:key (:root (delete bt3 5))) => 20
                (:key (:left (:root (delete bt3 10)))) => 5
-               (:key (:right (:root (delete bt3 30)))) => 22)
+               (:key (:right (:root (delete bt3 30)))) => 22
+               (:key (:right (:left (:root (delete bt3 20))))) => nil)
          (fact "delete-value correctly deletes an element"
                (:key (:root (delete-value bt2 20))) => -1
                (:key (:root (delete-value bt2 21))) => 20
@@ -61,7 +62,8 @@
                (:key (:root (delete-value bt3 30))) => 20
                (:key (:root (delete-value bt3 5))) => 20
                (:key (:left (:root (delete-value bt3 10 )))) => 5
-               (:key (:right (:root (delete-value bt3 30)))) => 22)
+               (:key (:right (:root (delete-value bt3 30)))) => 22
+                      (:key (:right (:left (:root (delete-value bt3 20))))) => nil)
          (fact "delete-value decrements properly"
                (:size (delete-value bt2 20)) => 2
                (:size (delete-value bt2 100)) => 3
