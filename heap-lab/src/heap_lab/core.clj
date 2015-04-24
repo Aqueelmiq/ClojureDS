@@ -12,10 +12,10 @@
 ;; We will initialize this using the `make-heap` function.
 
 (defn make-heap
-  "Creates an empty heap.  Specify the size for the data vector.
+    "Creates an empty heap.  Specify the size for the data vector.
 The vector will be populated with `nil`."
-  [size]
-  (Heap. size (apply vector (repeat size nil))))
+    [capacity]
+    (Heap. 0 (apply vector (repeat capacity nil))))
 
 ;; To access the elements of the heap, we will use these functions
 ;; `get`, `left`, `right`, and `parent`.
@@ -27,8 +27,7 @@ this is part of the implementation, not for public consumption."
   [heap loc]
   (cond (>= loc (count (:data heap)))
         (throw (Exception. (str "Get called with " loc " but last vector slot is " (dec (count (:data heap))))))
-
-        :otherwise
+        :else
         (get-in heap [:data loc])))
 
 (defn heap-set
@@ -38,8 +37,7 @@ this is part of the implementation, not for public consumption."
   [heap loc value]
   (cond (>= loc (count (:data heap)))
         (throw (Exception. (str "Get called with " loc " but last vector slot is " (dec (count (:data heap))))))
-
-        :otherwise
+        :else
         (assoc-in heap [:data loc] value)))
 
 (defn heap-left
@@ -61,20 +59,43 @@ this is part of the implementation, not for public consumption."
 ;; write helper functions if you want (e.g., `percolate-down`.)  Do **not** write
 ;; `midje` tests for them, because they are not part of the spec.
 
+(defn swap [v i1 i2]
+     (assoc v i2 (v i1) i1 (v i2)))
+
 (defn top
   "Return the top element of a heap.
 If the heap has no elements, return `nil`."
-  [heap])
+  [heap]
+  (cond (= 0 (:size heap)) nil
+        :else (first (:data heap))))
+
+(defn precolate-up
+  ([heap loc]
+   (cond (< loc 1) heap
+         (nil? (heap (heap-parent loc))) (precolate-up (swap heap loc (heap-parent loc)) (heap-parent loc))
+         (> (heap (heap-parent loc)) (heap loc)) (precolate-up (swap heap loc (heap-parent loc)) (heap-parent loc))
+         :else heap)
+   ))
+
+(defn percolate-down
+  ([heap] (percolate-down heap 1))
+  ([heap loc]
+   (cond (> loc (- (:size heap) 1)) (:data heap)
+         (> ((:data heap) loc) ((:data heap) (heap-left loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-left loc))))
+         (> ((:data heap) loc) ((:data heap) (heap-right loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-right loc))))
+         :else (:data heap))))
 
 (defn delete
   "Deletes the first element of the heap.
 Returns the new heap."
   [heap]
-  nil)
+  (cond (= 0 (:size heap)) heap
+        :else (Heap. (- (:size heap) 1) (precolate-up (:data heap) (:size heap)))))
 
 (defn add
   "Adds a new element to the heap.
 If the data vector is too small, we resize it."
   [heap data]
-  nil)
+  (cond (> (:size heap) (count (:data heap))) (add (Heap. (:size heap) (conj (:data heap) nil))) 
+        :else (Heap. (+ 1 (:size heap)) (precolate-up (conj (vec (rest (:data heap))) data) 0))))
 
