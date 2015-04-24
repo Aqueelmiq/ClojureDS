@@ -1,74 +1,160 @@
 Lab report for Heap Lab - amiqdad
-Timestamp: 2015-04-24 15:04:51
+Timestamp: 2015-04-24 16:24:46
 
 |  :scenario |                                   :title |                                   :result | :score |
 |------------+------------------------------------------+-------------------------------------------+--------|
-|    working |    Test student code vs instructor tests |                                           |        |
+|    working |    Test student code vs instructor tests |                                      Fail |     32 |
 | qualifying |    Test student tests vs instructor code |                                      Pass |      5 |
 |    broke-1 |         Heap add doesn't increment size. | Fail: Student tests did not detect error. |      0 |
 |    broke-2 |              Move up only moves up once. | Fail: Student tests did not detect error. |      0 |
 |    broke-3 |           Percolate down only goes left. | Fail: Student tests did not detect error. |      0 |
 |    broke-4 | Percolate down right swaps never happen. | Fail: Student tests did not detect error. |      0 |
 |    broke-5 |           Delete doesn't decrement size. | Fail: Student tests did not detect error. |      0 |
-|      total |                              Total Score |                                           |      5 |
+|      total |                              Total Score |                                           |     37 |
 
 Details:
 
 
 ** Details for Test student code vs instructor tests
 
-Exception in thread "main" clojure.lang.ArityException: Wrong number of args (1) passed to: core$add
-	at clojure.lang.AFn.throwArity(AFn.java:437)
-	at clojure.lang.AFn.invoke(AFn.java:39)
-	at heap_lab.core$add.invoke(core.clj:99)
-	at heap_lab.t_core$eval8101$fn__8102$fn__8103.invoke(t_core.clj:12)
-	at midje.util.thread_safe_var_nesting$with_altered_roots_STAR_.invoke(thread_safe_var_nesting.clj:32)
-	at heap_lab.t_core$eval8101$fn__8102.invoke(t_core.clj:12)
-	at clojure.lang.AFn.applyToHelper(AFn.java:159)
-	at clojure.lang.AFn.applyTo(AFn.java:151)
-	at clojure.lang.AFunction$1.doInvoke(AFunction.java:29)
-	at clojure.lang.RestFn.invoke(RestFn.java:397)
-	at midje.checking.facts$check_one$fn__6175.invoke(facts.clj:31)
-	at midje.checking.facts$check_one.invoke(facts.clj:30)
-	at midje.checking.facts$creation_time_check.invoke(facts.clj:35)
-	at heap_lab.t_core$eval8101.invoke(t_core.clj:12)
-	at clojure.lang.Compiler.eval(Compiler.java:6619)
-	at clojure.lang.Compiler.load(Compiler.java:7064)
-	at clojure.lang.RT.loadResourceScript(RT.java:370)
-	at clojure.lang.RT.loadResourceScript(RT.java:361)
-	at clojure.lang.RT.load(RT.java:440)
-	at clojure.lang.RT.load(RT.java:411)
-	at clojure.core$load$fn__5018.invoke(core.clj:5530)
-	at clojure.core$load.doInvoke(core.clj:5529)
-	at clojure.lang.RestFn.invoke(RestFn.java:408)
-	at clojure.core$load_one.invoke(core.clj:5336)
-	at clojure.core$load_lib$fn__4967.invoke(core.clj:5375)
-	at clojure.core$load_lib.doInvoke(core.clj:5374)
-	at clojure.lang.RestFn.applyTo(RestFn.java:142)
-	at clojure.core$apply.invoke(core.clj:619)
-	at clojure.core$load_libs.doInvoke(core.clj:5413)
-	at clojure.lang.RestFn.applyTo(RestFn.java:137)
-	at clojure.core$apply.invoke(core.clj:619)
-	at clojure.core$require.doInvoke(core.clj:5496)
-	at clojure.lang.RestFn.invoke(RestFn.java:421)
-	at midje.repl$load_facts$fn__7979.invoke(repl.clj:206)
-	at midje.repl$load_facts.doInvoke(repl.clj:192)
-	at clojure.lang.RestFn.invoke(RestFn.java:397)
-	at user$eval8042.invoke(form-init6367167757338865279.clj:1)
-	at clojure.lang.Compiler.eval(Compiler.java:6619)
-	at clojure.lang.Compiler.eval(Compiler.java:6609)
-	at clojure.lang.Compiler.load(Compiler.java:7064)
-	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
-	at clojure.main$load_script.invoke(main.clj:294)
-	at clojure.main$init_opt.invoke(main.clj:299)
-	at clojure.main$initialize.invoke(main.clj:327)
-	at clojure.main$null_opt.invoke(main.clj:362)
-	at clojure.main$main.doInvoke(main.clj:440)
-	at clojure.lang.RestFn.invoke(RestFn.java:421)
-	at clojure.lang.Var.invoke(Var.java:419)
-	at clojure.lang.AFn.applyToHelper(AFn.java:163)
-	at clojure.lang.Var.applyTo(Var.java:532)
-	at clojure.main.main(main.java:37)
+
+FAIL "about delete - It deletes one element okay." at (t_core.clj:77)
+Actual result did not agree with the checking function.
+        Actual result: java.lang.IndexOutOfBoundsException
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8214$fn__8215$fn__8216.invoke(t_core.clj:77)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8214$fn__8215.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8214.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 0 [nil nil]))
+
+FAIL "about delete - It deletes from two element heaps okay." at (t_core.clj:80)
+Actual result did not agree with the checking function.
+        Actual result: java.lang.IndexOutOfBoundsException
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220$fn__8221$fn__8222.invoke(t_core.clj:80)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220$fn__8221.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 1 [10 nil]))
+
+FAIL "about delete - It deletes from two element heaps okay." at (t_core.clj:81)
+Actual result did not agree with the checking function.
+        Actual result: java.lang.NullPointerException
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220$fn__8221$fn__8224.invoke(t_core.clj:81)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220$fn__8221.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 1 [10 nil nil]))
+
+FAIL "about delete - Deletes from three element heaps work." at (t_core.clj:84)
+Actual result did not agree with the checking function.
+        Actual result: clojure.lang.ArityException: Wrong number of args (1) passed to: core$percolate-down
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228$fn__8229$fn__8230.invoke(t_core.clj:84)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228$fn__8229.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 2 [5 10]))
+
+FAIL "about delete - Deletes from three element heaps work." at (t_core.clj:85)
+Actual result did not agree with the checking function.
+        Actual result: java.lang.IndexOutOfBoundsException
+              heap_lab.core$percolate_down.invoke(core.clj:83)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228$fn__8229$fn__8232.invoke(t_core.clj:85)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228$fn__8229.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 2 [5 10]))
+
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:88)
+Actual result did not agree with the checking function.
+        Actual result: {:data [2 4 6 8 10 12], :size 6}::heap_lab.core.Heap
+    Checking function: (heap-equal (Heap. 6 [2 6 4 12 8 10 nil]))
+
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:89)
+Actual result did not agree with the checking function.
+        Actual result: clojure.lang.ArityException: Wrong number of args (1) passed to: core$percolate-down
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237$fn__8240.invoke(t_core.clj:89)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 6 [2 4 10 6 8 12 nil]))
+
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:90)
+Actual result did not agree with the checking function.
+        Actual result: {:data [2 4 6 8 10 5], :size 6}::heap_lab.core.Heap
+    Checking function: (heap-equal (Heap. 6 [2 5 4 6 8 10 nil]))
+
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:91)
+Actual result did not agree with the checking function.
+        Actual result: clojure.lang.ArityException: Wrong number of args (1) passed to: core$percolate-down
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237$fn__8244.invoke(t_core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 6 [2 4 5 6 8 10 nil]))
+
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:93)
+Actual result did not agree with the checking function.
+        Actual result: clojure.lang.ArityException: Wrong number of args (1) passed to: core$percolate-down
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237$fn__8246.invoke(t_core.clj:93)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 5 [4 6 10 12 8 nil nil]))
+
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:94)
+Actual result did not agree with the checking function.
+        Actual result: {:data [4 10 6 8 12 nil], :size 5}::heap_lab.core.Heap
+    Checking function: (heap-equal (Heap. 5 [4 6 10 12 8 nil nil]))
+
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:95)
+Actual result did not agree with the checking function.
+        Actual result: clojure.lang.ArityException: Wrong number of args (1) passed to: core$percolate-down
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237$fn__8250.invoke(t_core.clj:95)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 5 [4 5 10 6 8 nil nil]))
+
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:96)
+Actual result did not agree with the checking function.
+        Actual result: {:data [4 5 6 8 10 nil], :size 5}::heap_lab.core.Heap
+    Checking function: (heap-equal (Heap. 5 [4 6 5 10 8 nil nil]))
+FAILURE: 13 checks failed.  (But 35 succeeded.)
 Subprocess failed
 
 
