@@ -88,7 +88,7 @@ If the heap has no elements, return `nil`."
 Returns the new heap."
   [heap]
   (cond (= 0 (:size heap)) heap
-        :else (Heap. (- (:size heap) 1) (percolate-down (Heap. (:size heap) (vec (rest (:data heap)))) 0))))
+        :else (Heap. (- (:size heap) 1) (percolate-down (Heap. (:size heap) (conj (vec (rest (:data heap))) nil)) 0))))
 
 (defn add
   "Adds a new element to the heap.
