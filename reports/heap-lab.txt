@@ -1,16 +1,16 @@
 Lab report for Heap Lab - amiqdad
-Timestamp: 2015-04-24 16:24:46
+Timestamp: 2015-04-25 16:21:36
 
-|  :scenario |                                   :title |                                   :result | :score |
-|------------+------------------------------------------+-------------------------------------------+--------|
-|    working |    Test student code vs instructor tests |                                      Fail |     32 |
-| qualifying |    Test student tests vs instructor code |                                      Pass |      5 |
-|    broke-1 |         Heap add doesn't increment size. | Fail: Student tests did not detect error. |      0 |
-|    broke-2 |              Move up only moves up once. | Fail: Student tests did not detect error. |      0 |
-|    broke-3 |           Percolate down only goes left. | Fail: Student tests did not detect error. |      0 |
-|    broke-4 | Percolate down right swaps never happen. | Fail: Student tests did not detect error. |      0 |
-|    broke-5 |           Delete doesn't decrement size. | Fail: Student tests did not detect error. |      0 |
-|      total |                              Total Score |                                           |     37 |
+|  :scenario |                                   :title | :result | :score |
+|------------+------------------------------------------+---------+--------|
+|    working |    Test student code vs instructor tests |    Fail |     32 |
+| qualifying |    Test student tests vs instructor code |         |        |
+|    broke-1 |         Heap add doesn't increment size. |         |        |
+|    broke-2 |              Move up only moves up once. |         |        |
+|    broke-3 |           Percolate down only goes left. |         |        |
+|    broke-4 | Percolate down right swaps never happen. |         |        |
+|    broke-5 |           Delete doesn't decrement size. |         |        |
+|      total |                              Total Score |         |     32 |
 
 Details:
 
@@ -20,7 +20,7 @@ Details:
 
 FAIL "about delete - It deletes one element okay." at (t_core.clj:77)
 Actual result did not agree with the checking function.
-        Actual result: java.lang.IndexOutOfBoundsException
+        Actual result: java.lang.NullPointerException
               heap_lab.core$percolate_down.invoke(core.clj:82)
               heap_lab.core$delete.invoke(core.clj:91)
               heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8214$fn__8215$fn__8216.invoke(t_core.clj:77)
@@ -33,7 +33,7 @@ Actual result did not agree with the checking function.
 
 FAIL "about delete - It deletes from two element heaps okay." at (t_core.clj:80)
 Actual result did not agree with the checking function.
-        Actual result: java.lang.IndexOutOfBoundsException
+        Actual result: java.lang.NullPointerException
               heap_lab.core$percolate_down.invoke(core.clj:82)
               heap_lab.core$delete.invoke(core.clj:91)
               heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220$fn__8221$fn__8222.invoke(t_core.clj:80)
@@ -72,7 +72,7 @@ Actual result did not agree with the checking function.
 
 FAIL "about delete - Deletes from three element heaps work." at (t_core.clj:85)
 Actual result did not agree with the checking function.
-        Actual result: java.lang.IndexOutOfBoundsException
+        Actual result: java.lang.NullPointerException
               heap_lab.core$percolate_down.invoke(core.clj:83)
               heap_lab.core$delete.invoke(core.clj:91)
               heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228$fn__8229$fn__8232.invoke(t_core.clj:85)
@@ -85,7 +85,7 @@ Actual result did not agree with the checking function.
 
 FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:88)
 Actual result did not agree with the checking function.
-        Actual result: {:data [2 4 6 8 10 12], :size 6}::heap_lab.core.Heap
+        Actual result: {:data [2 4 6 8 10 12 nil], :size 6}::heap_lab.core.Heap
     Checking function: (heap-equal (Heap. 6 [2 6 4 12 8 10 nil]))
 
 FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:89)
@@ -103,7 +103,7 @@ Actual result did not agree with the checking function.
 
 FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:90)
 Actual result did not agree with the checking function.
-        Actual result: {:data [2 4 6 8 10 5], :size 6}::heap_lab.core.Heap
+        Actual result: {:data [2 4 6 8 10 5 nil], :size 6}::heap_lab.core.Heap
     Checking function: (heap-equal (Heap. 6 [2 5 4 6 8 10 nil]))
 
 FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:91)
@@ -134,7 +134,7 @@ Actual result did not agree with the checking function.
 
 FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:94)
 Actual result did not agree with the checking function.
-        Actual result: {:data [4 10 6 8 12 nil], :size 5}::heap_lab.core.Heap
+        Actual result: {:data [4 10 6 8 12 nil nil], :size 5}::heap_lab.core.Heap
     Checking function: (heap-equal (Heap. 5 [4 6 10 12 8 nil nil]))
 
 FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:95)
@@ -152,7 +152,7 @@ Actual result did not agree with the checking function.
 
 FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:96)
 Actual result did not agree with the checking function.
-        Actual result: {:data [4 5 6 8 10 nil], :size 5}::heap_lab.core.Heap
+        Actual result: {:data [4 5 6 8 10 nil nil], :size 5}::heap_lab.core.Heap
     Checking function: (heap-equal (Heap. 5 [4 6 5 10 8 nil nil]))
 FAILURE: 13 checks failed.  (But 35 succeeded.)
 Subprocess failed
@@ -160,29 +160,329 @@ Subprocess failed
 
 ** Details for Test student tests vs instructor code
 
-All checks (2) succeeded.
+Exception in thread "main" java.lang.ClassNotFoundException: heap-lab.core.Heap
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+	at clojure.lang.DynamicClassLoader.findClass(DynamicClassLoader.java:61)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:191)
+	at heap_lab.t_core$eval8046$loading__4910__auto____8047.invoke(t_core.clj:1)
+	at heap_lab.t_core$eval8046.invoke(t_core.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6608)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.RT.loadResourceScript(RT.java:370)
+	at clojure.lang.RT.loadResourceScript(RT.java:361)
+	at clojure.lang.RT.load(RT.java:440)
+	at clojure.lang.RT.load(RT.java:411)
+	at clojure.core$load$fn__5018.invoke(core.clj:5530)
+	at clojure.core$load.doInvoke(core.clj:5529)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.core$load_one.invoke(core.clj:5336)
+	at clojure.core$load_lib$fn__4967.invoke(core.clj:5375)
+	at clojure.core$load_lib.doInvoke(core.clj:5374)
+	at clojure.lang.RestFn.applyTo(RestFn.java:142)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$load_libs.doInvoke(core.clj:5413)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$require.doInvoke(core.clj:5496)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at midje.repl$load_facts$fn__7979.invoke(repl.clj:206)
+	at midje.repl$load_facts.doInvoke(repl.clj:192)
+	at clojure.lang.RestFn.invoke(RestFn.java:397)
+	at user$eval8042.invoke(form-init1922266503337592473.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6609)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
+	at clojure.main$load_script.invoke(main.clj:294)
+	at clojure.main$init_opt.invoke(main.clj:299)
+	at clojure.main$initialize.invoke(main.clj:327)
+	at clojure.main$null_opt.invoke(main.clj:362)
+	at clojure.main$main.doInvoke(main.clj:440)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at clojure.lang.Var.invoke(Var.java:419)
+	at clojure.lang.AFn.applyToHelper(AFn.java:163)
+	at clojure.lang.Var.applyTo(Var.java:532)
+	at clojure.main.main(main.java:37)
+Subprocess failed
 
 
 ** Details for Heap add doesn't increment size.
 
-All checks (2) succeeded.
+Exception in thread "main" java.lang.ClassNotFoundException: heap-lab.core.Heap
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+	at clojure.lang.DynamicClassLoader.findClass(DynamicClassLoader.java:61)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:191)
+	at heap_lab.t_core$eval8046$loading__4910__auto____8047.invoke(t_core.clj:1)
+	at heap_lab.t_core$eval8046.invoke(t_core.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6608)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.RT.loadResourceScript(RT.java:370)
+	at clojure.lang.RT.loadResourceScript(RT.java:361)
+	at clojure.lang.RT.load(RT.java:440)
+	at clojure.lang.RT.load(RT.java:411)
+	at clojure.core$load$fn__5018.invoke(core.clj:5530)
+	at clojure.core$load.doInvoke(core.clj:5529)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.core$load_one.invoke(core.clj:5336)
+	at clojure.core$load_lib$fn__4967.invoke(core.clj:5375)
+	at clojure.core$load_lib.doInvoke(core.clj:5374)
+	at clojure.lang.RestFn.applyTo(RestFn.java:142)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$load_libs.doInvoke(core.clj:5413)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$require.doInvoke(core.clj:5496)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at midje.repl$load_facts$fn__7979.invoke(repl.clj:206)
+	at midje.repl$load_facts.doInvoke(repl.clj:192)
+	at clojure.lang.RestFn.invoke(RestFn.java:397)
+	at user$eval8042.invoke(form-init8433263357504385256.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6609)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
+	at clojure.main$load_script.invoke(main.clj:294)
+	at clojure.main$init_opt.invoke(main.clj:299)
+	at clojure.main$initialize.invoke(main.clj:327)
+	at clojure.main$null_opt.invoke(main.clj:362)
+	at clojure.main$main.doInvoke(main.clj:440)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at clojure.lang.Var.invoke(Var.java:419)
+	at clojure.lang.AFn.applyToHelper(AFn.java:163)
+	at clojure.lang.Var.applyTo(Var.java:532)
+	at clojure.main.main(main.java:37)
+Subprocess failed
 
 
 ** Details for Move up only moves up once.
 
-All checks (2) succeeded.
+Exception in thread "main" java.lang.ClassNotFoundException: heap-lab.core.Heap
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+	at clojure.lang.DynamicClassLoader.findClass(DynamicClassLoader.java:61)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:191)
+	at heap_lab.t_core$eval8046$loading__4910__auto____8047.invoke(t_core.clj:1)
+	at heap_lab.t_core$eval8046.invoke(t_core.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6608)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.RT.loadResourceScript(RT.java:370)
+	at clojure.lang.RT.loadResourceScript(RT.java:361)
+	at clojure.lang.RT.load(RT.java:440)
+	at clojure.lang.RT.load(RT.java:411)
+	at clojure.core$load$fn__5018.invoke(core.clj:5530)
+	at clojure.core$load.doInvoke(core.clj:5529)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.core$load_one.invoke(core.clj:5336)
+	at clojure.core$load_lib$fn__4967.invoke(core.clj:5375)
+	at clojure.core$load_lib.doInvoke(core.clj:5374)
+	at clojure.lang.RestFn.applyTo(RestFn.java:142)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$load_libs.doInvoke(core.clj:5413)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$require.doInvoke(core.clj:5496)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at midje.repl$load_facts$fn__7979.invoke(repl.clj:206)
+	at midje.repl$load_facts.doInvoke(repl.clj:192)
+	at clojure.lang.RestFn.invoke(RestFn.java:397)
+	at user$eval8042.invoke(form-init4855107014301668411.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6609)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
+	at clojure.main$load_script.invoke(main.clj:294)
+	at clojure.main$init_opt.invoke(main.clj:299)
+	at clojure.main$initialize.invoke(main.clj:327)
+	at clojure.main$null_opt.invoke(main.clj:362)
+	at clojure.main$main.doInvoke(main.clj:440)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at clojure.lang.Var.invoke(Var.java:419)
+	at clojure.lang.AFn.applyToHelper(AFn.java:163)
+	at clojure.lang.Var.applyTo(Var.java:532)
+	at clojure.main.main(main.java:37)
+Subprocess failed
 
 
 ** Details for Percolate down only goes left.
 
-All checks (2) succeeded.
+Exception in thread "main" java.lang.ClassNotFoundException: heap-lab.core.Heap
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+	at clojure.lang.DynamicClassLoader.findClass(DynamicClassLoader.java:61)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:191)
+	at heap_lab.t_core$eval8046$loading__4910__auto____8047.invoke(t_core.clj:1)
+	at heap_lab.t_core$eval8046.invoke(t_core.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6608)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.RT.loadResourceScript(RT.java:370)
+	at clojure.lang.RT.loadResourceScript(RT.java:361)
+	at clojure.lang.RT.load(RT.java:440)
+	at clojure.lang.RT.load(RT.java:411)
+	at clojure.core$load$fn__5018.invoke(core.clj:5530)
+	at clojure.core$load.doInvoke(core.clj:5529)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.core$load_one.invoke(core.clj:5336)
+	at clojure.core$load_lib$fn__4967.invoke(core.clj:5375)
+	at clojure.core$load_lib.doInvoke(core.clj:5374)
+	at clojure.lang.RestFn.applyTo(RestFn.java:142)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$load_libs.doInvoke(core.clj:5413)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$require.doInvoke(core.clj:5496)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at midje.repl$load_facts$fn__7979.invoke(repl.clj:206)
+	at midje.repl$load_facts.doInvoke(repl.clj:192)
+	at clojure.lang.RestFn.invoke(RestFn.java:397)
+	at user$eval8042.invoke(form-init4726991339620088880.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6609)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
+	at clojure.main$load_script.invoke(main.clj:294)
+	at clojure.main$init_opt.invoke(main.clj:299)
+	at clojure.main$initialize.invoke(main.clj:327)
+	at clojure.main$null_opt.invoke(main.clj:362)
+	at clojure.main$main.doInvoke(main.clj:440)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at clojure.lang.Var.invoke(Var.java:419)
+	at clojure.lang.AFn.applyToHelper(AFn.java:163)
+	at clojure.lang.Var.applyTo(Var.java:532)
+	at clojure.main.main(main.java:37)
+Subprocess failed
 
 
 ** Details for Percolate down right swaps never happen.
 
-All checks (2) succeeded.
+Exception in thread "main" java.lang.ClassNotFoundException: heap-lab.core.Heap
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+	at clojure.lang.DynamicClassLoader.findClass(DynamicClassLoader.java:61)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:191)
+	at heap_lab.t_core$eval8046$loading__4910__auto____8047.invoke(t_core.clj:1)
+	at heap_lab.t_core$eval8046.invoke(t_core.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6608)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.RT.loadResourceScript(RT.java:370)
+	at clojure.lang.RT.loadResourceScript(RT.java:361)
+	at clojure.lang.RT.load(RT.java:440)
+	at clojure.lang.RT.load(RT.java:411)
+	at clojure.core$load$fn__5018.invoke(core.clj:5530)
+	at clojure.core$load.doInvoke(core.clj:5529)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.core$load_one.invoke(core.clj:5336)
+	at clojure.core$load_lib$fn__4967.invoke(core.clj:5375)
+	at clojure.core$load_lib.doInvoke(core.clj:5374)
+	at clojure.lang.RestFn.applyTo(RestFn.java:142)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$load_libs.doInvoke(core.clj:5413)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$require.doInvoke(core.clj:5496)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at midje.repl$load_facts$fn__7979.invoke(repl.clj:206)
+	at midje.repl$load_facts.doInvoke(repl.clj:192)
+	at clojure.lang.RestFn.invoke(RestFn.java:397)
+	at user$eval8042.invoke(form-init6171773338368952059.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6609)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
+	at clojure.main$load_script.invoke(main.clj:294)
+	at clojure.main$init_opt.invoke(main.clj:299)
+	at clojure.main$initialize.invoke(main.clj:327)
+	at clojure.main$null_opt.invoke(main.clj:362)
+	at clojure.main$main.doInvoke(main.clj:440)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at clojure.lang.Var.invoke(Var.java:419)
+	at clojure.lang.AFn.applyToHelper(AFn.java:163)
+	at clojure.lang.Var.applyTo(Var.java:532)
+	at clojure.main.main(main.java:37)
+Subprocess failed
 
 
 ** Details for Delete doesn't decrement size.
 
-All checks (2) succeeded.
+Exception in thread "main" java.lang.ClassNotFoundException: heap-lab.core.Heap
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+	at clojure.lang.DynamicClassLoader.findClass(DynamicClassLoader.java:61)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:191)
+	at heap_lab.t_core$eval8046$loading__4910__auto____8047.invoke(t_core.clj:1)
+	at heap_lab.t_core$eval8046.invoke(t_core.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6608)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.RT.loadResourceScript(RT.java:370)
+	at clojure.lang.RT.loadResourceScript(RT.java:361)
+	at clojure.lang.RT.load(RT.java:440)
+	at clojure.lang.RT.load(RT.java:411)
+	at clojure.core$load$fn__5018.invoke(core.clj:5530)
+	at clojure.core$load.doInvoke(core.clj:5529)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.core$load_one.invoke(core.clj:5336)
+	at clojure.core$load_lib$fn__4967.invoke(core.clj:5375)
+	at clojure.core$load_lib.doInvoke(core.clj:5374)
+	at clojure.lang.RestFn.applyTo(RestFn.java:142)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$load_libs.doInvoke(core.clj:5413)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.core$apply.invoke(core.clj:619)
+	at clojure.core$require.doInvoke(core.clj:5496)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at midje.repl$load_facts$fn__7979.invoke(repl.clj:206)
+	at midje.repl$load_facts.doInvoke(repl.clj:192)
+	at clojure.lang.RestFn.invoke(RestFn.java:397)
+	at user$eval8042.invoke(form-init2549125349457575360.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6609)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
+	at clojure.main$load_script.invoke(main.clj:294)
+	at clojure.main$init_opt.invoke(main.clj:299)
+	at clojure.main$initialize.invoke(main.clj:327)
+	at clojure.main$null_opt.invoke(main.clj:362)
+	at clojure.main$main.doInvoke(main.clj:440)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at clojure.lang.Var.invoke(Var.java:419)
+	at clojure.lang.AFn.applyToHelper(AFn.java:163)
+	at clojure.lang.Var.applyTo(Var.java:532)
+	at clojure.main.main(main.java:37)
+Subprocess failed
