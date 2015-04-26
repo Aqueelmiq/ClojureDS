@@ -1,7 +1,7 @@
 (ns heap-lab.t-core
   (:use midje.sweet)
   (:use [heap-lab.core])
-  (:import [heap-lab.core Heap] ))
+  (:import [heap_lab.core Heap] ))
 
 
 (facts "about numbers"
@@ -37,13 +37,15 @@
 (facts "About Delete function"
        (let [a (Heap. 10 [3 4 8 11 24 10 100 18 17 42 nil nil])
              b (Heap. 0 [nil nil nil])
-             c (Heap. 1 [7 nil nil])]
+             c (Heap. 1 [7 nil nil])
+             d (Heap. 2 [2 7 nil])]
          (fact "Delete Deleted the element Correctly"
                (top (delete a)) => 4
                (top (delete (delete a))) => 8
                (delete b) => (Heap. 0 [nil nil nil])
                (delete c) => (Heap. 0 [nil nil nil])
-               ) 
+               (delete d) => (Heap. 1 [7 nil nil]))
+         
          (fact "Delete decrements size Correctly"
                (:size (delete a)) => 9
                (:size (delete c)) => 0

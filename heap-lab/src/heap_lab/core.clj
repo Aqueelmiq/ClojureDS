@@ -78,7 +78,7 @@ If the heap has no elements, return `nil`."
 
 (defn percolate-down
   ([heap loc]
-   (cond (> loc (- (:size heap) 1)) (:data heap)
+   (cond (> (heap-right loc) (- (:size heap) 1)) (:data heap)
          (> ((:data heap) loc) ((:data heap) (heap-left loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-left loc))))
          (> ((:data heap) loc) ((:data heap) (heap-right loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-right loc))))
                   :else (:data heap))))
