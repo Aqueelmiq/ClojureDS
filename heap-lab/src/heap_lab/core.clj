@@ -78,7 +78,7 @@ If the heap has no elements, return `nil`."
 
 (defn percolate-down
   ([heap loc]
-   (cond (> (heap-left loc) (- (:size heap) 1)) (:data heap)
+   (cond (> (heap-right loc) (- (:size heap) 1)) (:data heap)
          (> ((:data heap) loc) ((:data heap) (heap-left loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-left loc))) (heap-left loc))
          (> ((:data heap) loc) ((:data heap) (heap-right loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-right loc))) (heap-right loc))
          :else (:data heap))))
@@ -88,8 +88,7 @@ If the heap has no elements, return `nil`."
 Returns the new heap."
   [heap]
   (cond (= 0 (:size heap)) heap
-        (= 1 (:size heap)) (Heap. 0 ([nil]))
-        :else (Heap. (- (:size heap) 1) (percolate-down (Heap. (:size heap) (conj (vec (rest (:data heap))) nil)) 0))))
+        :else (Heap. (- (:size heap) 1) (percolate-down (Heap. (:size heap) (assoc (swap (:data heap) 0 (dec (:size heap))) (dec (:size heap)) nil)) 0))))
 
 (defn add
   "Adds a new element to the heap.

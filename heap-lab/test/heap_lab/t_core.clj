@@ -41,7 +41,7 @@
              d (Heap. 2 [2 7 nil])]
          (fact "Delete Deleted the element Correctly"
                (top (delete a)) => 4
-               (top (delete (delete a))) => 8
+               (top (delete (delete a))) => 11
                (delete b) => (Heap. 0 [nil nil nil])
                (delete c) => (Heap. 0 [nil nil nil])
                (delete d) => (Heap. 1 [7 nil nil]))
