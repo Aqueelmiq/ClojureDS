@@ -1,18 +1,56 @@
 Lab report for Heap Lab - amiqdad
-Timestamp: 2015-04-25 20:29:58
+Timestamp: 2015-04-25 21:06:30
 
 |  :scenario |                                :title |                   :result | :score |
 |------------+---------------------------------------+---------------------------+--------|
-|    working | Test student code vs instructor tests |                      Fail |     36 |
+|    working | Test student code vs instructor tests |                      Fail |     33 |
 | qualifying | Test student tests vs instructor code |                      Fail |      4 |
 | qualifying |           Qualifying Scenarios Failed | No further scenarios run. |      0 |
-|      total |                           Total Score |                           |     40 |
+|      total |                           Total Score |                           |     37 |
 
 Details:
 
 
 ** Details for Test student code vs instructor tests
 
+
+FAIL "about delete - It deletes one element okay." at (t_core.clj:77)
+Actual result did not agree with the checking function.
+        Actual result: clojure.lang.ArityException: Wrong number of args (0) passed to: PersistentVector
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8214$fn__8215$fn__8216.invoke(t_core.clj:77)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8214$fn__8215.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8214.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 0 [nil nil]))
+
+FAIL "about delete - It deletes from two element heaps okay." at (t_core.clj:80)
+Actual result did not agree with the checking function.
+        Actual result: java.lang.NullPointerException
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:92)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220$fn__8221$fn__8222.invoke(t_core.clj:80)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220$fn__8221.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 1 [10 nil]))
+
+FAIL "about delete - It deletes from two element heaps okay." at (t_core.clj:81)
+Actual result did not agree with the checking function.
+        Actual result: java.lang.NullPointerException
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:92)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220$fn__8221$fn__8224.invoke(t_core.clj:81)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220$fn__8221.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8220.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 1 [10 nil nil]))
 
 FAIL "about delete - Deletes from three element heaps work." at (t_core.clj:85)
 Actual result did not agree with the checking function.
@@ -66,7 +104,7 @@ FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:96)
 Actual result did not agree with the checking function.
         Actual result: {:data [4 5 6 8 10 nil nil], :size 5}::heap_lab.core.Heap
     Checking function: (heap-equal (Heap. 5 [4 6 5 10 8 nil nil]))
-FAILURE: 9 checks failed.  (But 39 succeeded.)
+FAILURE: 12 checks failed.  (But 36 succeeded.)
 Subprocess failed
 
 
