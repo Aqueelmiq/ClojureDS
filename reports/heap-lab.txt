@@ -1,12 +1,12 @@
 Lab report for Heap Lab - amiqdad
-Timestamp: 2015-04-25 22:16:47
+Timestamp: 2015-04-25 23:38:36
 
 |  :scenario |                                :title |                   :result | :score |
 |------------+---------------------------------------+---------------------------+--------|
-|    working | Test student code vs instructor tests |                      Fail |     40 |
+|    working | Test student code vs instructor tests |                      Fail |     37 |
 | qualifying | Test student tests vs instructor code |                      Fail |      4 |
 | qualifying |           Qualifying Scenarios Failed | No further scenarios run. |      0 |
-|      total |                           Total Score |                           |     44 |
+|      total |                           Total Score |                           |     41 |
 
 Details:
 
@@ -17,7 +17,7 @@ Details:
 FAIL "about delete - Deletes from three element heaps work." at (t_core.clj:84)
 Actual result did not agree with the checking function.
         Actual result: java.lang.NullPointerException
-              heap_lab.core$percolate_down.invoke(core.clj:83)
+              heap_lab.core$percolate_down.invoke(core.clj:82)
               heap_lab.core$delete.invoke(core.clj:91)
               heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228$fn__8229$fn__8230.invoke(t_core.clj:84)
               heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228$fn__8229.invoke(t_core.clj:73)
@@ -27,26 +27,85 @@ Actual result did not agree with the checking function.
               heap_lab.t_core$eval8205.invoke(t_core.clj:73)
     Checking function: (heap-equal (Heap. 2 [5 10]))
 
+FAIL "about delete - Deletes from three element heaps work." at (t_core.clj:85)
+Actual result did not agree with the checking function.
+        Actual result: java.lang.NullPointerException
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228$fn__8229$fn__8232.invoke(t_core.clj:85)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228$fn__8229.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8228.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 2 [5 10]))
+
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:88)
+Actual result did not agree with the checking function.
+        Actual result: java.lang.NullPointerException
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237$fn__8238.invoke(t_core.clj:88)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 6 [2 6 4 12 8 10 nil]))
+
 FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:89)
 Actual result did not agree with the checking function.
-        Actual result: {:data [4 6 2 12 8 10 nil], :size 6}::heap_lab.core.Heap
+        Actual result: java.lang.NullPointerException
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237$fn__8240.invoke(t_core.clj:89)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
     Checking function: (heap-equal (Heap. 6 [2 4 10 6 8 12 nil]))
+
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:90)
+Actual result did not agree with the checking function.
+        Actual result: java.lang.NullPointerException
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237$fn__8242.invoke(t_core.clj:90)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
+    Checking function: (heap-equal (Heap. 6 [2 5 4 6 8 10 nil]))
 
 FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:91)
 Actual result did not agree with the checking function.
-        Actual result: {:data [4 5 2 6 8 10 nil], :size 6}::heap_lab.core.Heap
+        Actual result: java.lang.NullPointerException
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$percolate_down.invoke(core.clj:82)
+              heap_lab.core$delete.invoke(core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237$fn__8244.invoke(t_core.clj:91)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236$fn__8237.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207$fn__8236.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206$fn__8207.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205$fn__8206.invoke(t_core.clj:73)
+              heap_lab.t_core$eval8205.invoke(t_core.clj:73)
     Checking function: (heap-equal (Heap. 6 [2 4 5 6 8 10 nil]))
 
-FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:93)
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:94)
 Actual result did not agree with the checking function.
-        Actual result: {:data [6 8 4 12 10 nil nil], :size 5}::heap_lab.core.Heap
+        Actual result: {:data [10 4 12 6 8 nil nil], :size 5}::heap_lab.core.Heap
     Checking function: (heap-equal (Heap. 5 [4 6 10 12 8 nil nil]))
 
-FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:95)
+FAIL "about delete - Deletes from larger heaps work." at (t_core.clj:96)
 Actual result did not agree with the checking function.
-        Actual result: {:data [5 6 4 10 8 nil nil], :size 5}::heap_lab.core.Heap
-    Checking function: (heap-equal (Heap. 5 [4 5 10 6 8 nil nil]))
-FAILURE: 5 checks failed.  (But 43 succeeded.)
+        Actual result: {:data [5 4 10 6 8 nil nil], :size 5}::heap_lab.core.Heap
+    Checking function: (heap-equal (Heap. 5 [4 6 5 10 8 nil nil]))
+FAILURE: 8 checks failed.  (But 40 succeeded.)
 Subprocess failed
 
 
