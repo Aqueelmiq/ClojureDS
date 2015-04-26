@@ -79,8 +79,8 @@ If the heap has no elements, return `nil`."
 (defn percolate-down
   ([heap loc]
    (cond (> (heap-right loc) (- (:size heap) 1)) (:data heap)
-         (> ((:data heap) loc) ((:data heap) (heap-left loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-left loc))) (heap-left loc))
          (> ((:data heap) loc) ((:data heap) (heap-right loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-right loc))) (heap-right loc))
+         (> ((:data heap) loc) ((:data heap) (heap-left loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-left loc))) (heap-left loc))
          :else (:data heap))))
 
 (defn delete
@@ -88,11 +88,11 @@ If the heap has no elements, return `nil`."
 Returns the new heap."
   [heap]
   (cond (= 0 (:size heap)) heap
-        :else (Heap. (- (:size heap) 1) (percolate-down (Heap. (:size heap) (assoc (swap (:data heap) 0 (dec (:size heap))) (dec (:size heap)) nil)) 0))))
+        :else (Heap. (dec (:size heap)) (percolate-down (Heap. (:size heap) (assoc (swap (:data heap) 0 (dec (:size heap))) (dec (:size heap)) nil)) 0))))
 
 (defn add
   "Adds a new element to the heap.
 If the data vector is too small, we resize it."
   [heap data]
   (cond (> (:size heap) (count (:data heap))) (add (Heap. (:size heap) (conj (:data heap) nil))) 
-        :else (Heap. (+ 1 (:size heap)) (precolate-up (assoc (:data heap) (:size heap) data) (:size heap)))))
+        :else (Heap. (inc (:size heap)) (precolate-up (assoc (:data heap) (:size heap) data) (:size heap)))))
