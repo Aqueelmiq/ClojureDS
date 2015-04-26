@@ -79,9 +79,10 @@ If the heap has no elements, return `nil`."
 (defn percolate-down
   ([heap loc]
    (cond (> (heap-right loc) (- (:size heap) 1)) (:data heap)
+         (or (= (dec (:size heap)) (heap-left loc)) (< ((:data heap) (heap-left loc)) ((:data heap) (heap-right loc)))) (if (> ((:data heap) loc) ((:data heap) (heap-left loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-left loc))) (heap-left loc)) (:data heap))
          (> ((:data heap) loc) ((:data heap) (heap-right loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-right loc))) (heap-right loc))
-         (> ((:data heap) loc) ((:data heap) (heap-left loc))) (percolate-down (Heap. (:size heap) (swap (:data heap) loc (heap-left loc))) (heap-left loc))
-         :else (:data heap))))
+         :else (:data heap)))
+         )
 
 (defn delete
   "Deletes the first element of the heap.

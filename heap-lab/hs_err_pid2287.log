@@ -1,0 +1,353 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 4096 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2798), pid=2287, tid=140560181360384
+#
+# JRE version:  (7.0_75-b13) (build )
+# Java VM: OpenJDK 64-Bit Server VM (24.75-b04 mixed mode linux-amd64 compressed oops)
+# Derivative: IcedTea 2.5.4
+# Distribution: Custom build (Fri Jan 23 11:00:44 UTC 2015)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fd6b0009000):  JavaThread "Unknown thread" [_thread_in_vm, id=2288, stack(0x00007fd6b79df000,0x00007fd6b7ae0000)]
+
+Stack: [0x00007fd6b79df000,0x00007fd6b7ae0000],  sp=0x00007fd6b7ade720,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x97dfb6]
+V  [libjvm.so+0x48e252]
+V  [libjvm.so+0x7f19aa]
+V  [libjvm.so+0x7ec17f]
+V  [libjvm.so+0x3b7bee]
+V  [libjvm.so+0x3b9cf6]
+V  [libjvm.so+0x422f6a]
+V  [libjvm.so+0x56248c]
+V  [libjvm.so+0x9479a7]
+V  [libjvm.so+0x947cf6]
+V  [libjvm.so+0x5ade7f]
+V  [libjvm.so+0x92954f]
+V  [libjvm.so+0x61ca00]  JNI_CreateJavaVM+0x60
+C  [libjli.so+0x29bf]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x00007fd6b0009000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=2288, stack(0x00007fd6b79df000,0x00007fd6b7ae0000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:01 270478                             /usr/lib/jvm/java-7-openjdk/jre/bin/java
+00600000-00601000 rw-p 00000000 08:01 270478                             /usr/lib/jvm/java-7-openjdk/jre/bin/java
+00809000-0082a000 rw-p 00000000 00:00 0                                  [heap]
+d6600000-100000000 rw-p 00000000 00:00 0 
+7fd6aa000000-7fd6aa270000 rwxp 00000000 00:00 0 
+7fd6aa270000-7fd6b0021000 rw-p 00000000 00:00 0 
+7fd6b0021000-7fd6b4000000 ---p 00000000 00:00 0 
+7fd6b4965000-7fd6b4ab2000 rw-p 00000000 00:00 0 
+7fd6b4ab3000-7fd6b4abd000 rw-p 00000000 00:00 0 
+7fd6b4abd000-7fd6b4c33000 rw-p 00000000 00:00 0 
+7fd6b4c33000-7fd6b4c3b000 r-xp 00000000 08:01 270445                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/libzip.so
+7fd6b4c3b000-7fd6b4e3a000 ---p 00008000 08:01 270445                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/libzip.so
+7fd6b4e3a000-7fd6b4e3b000 rw-p 00007000 08:01 270445                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/libzip.so
+7fd6b4e3b000-7fd6b4e46000 r-xp 00000000 08:01 132704                     /usr/lib/libnss_files-2.20.so
+7fd6b4e46000-7fd6b5046000 ---p 0000b000 08:01 132704                     /usr/lib/libnss_files-2.20.so
+7fd6b5046000-7fd6b5047000 r--p 0000b000 08:01 132704                     /usr/lib/libnss_files-2.20.so
+7fd6b5047000-7fd6b5048000 rw-p 0000c000 08:01 132704                     /usr/lib/libnss_files-2.20.so
+7fd6b5048000-7fd6b5074000 r-xp 00000000 08:01 270444                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/libjava.so
+7fd6b5074000-7fd6b5273000 ---p 0002c000 08:01 270444                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/libjava.so
+7fd6b5273000-7fd6b5275000 rw-p 0002b000 08:01 270444                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/libjava.so
+7fd6b5275000-7fd6b5282000 r-xp 00000000 08:01 270443                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/libverify.so
+7fd6b5282000-7fd6b5481000 ---p 0000d000 08:01 270443                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/libverify.so
+7fd6b5481000-7fd6b5483000 rw-p 0000c000 08:01 270443                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/libverify.so
+7fd6b5483000-7fd6b548a000 r-xp 00000000 08:01 132760                     /usr/lib/librt-2.20.so
+7fd6b548a000-7fd6b5689000 ---p 00007000 08:01 132760                     /usr/lib/librt-2.20.so
+7fd6b5689000-7fd6b568a000 r--p 00006000 08:01 132760                     /usr/lib/librt-2.20.so
+7fd6b568a000-7fd6b568b000 rw-p 00007000 08:01 132760                     /usr/lib/librt-2.20.so
+7fd6b568b000-7fd6b56a1000 r-xp 00000000 08:01 135609                     /usr/lib/libgcc_s.so.1
+7fd6b56a1000-7fd6b58a0000 ---p 00016000 08:01 135609                     /usr/lib/libgcc_s.so.1
+7fd6b58a0000-7fd6b58a1000 rw-p 00015000 08:01 135609                     /usr/lib/libgcc_s.so.1
+7fd6b58a1000-7fd6b59a4000 r-xp 00000000 08:01 132746                     /usr/lib/libm-2.20.so
+7fd6b59a4000-7fd6b5ba4000 ---p 00103000 08:01 132746                     /usr/lib/libm-2.20.so
+7fd6b5ba4000-7fd6b5ba5000 r--p 00103000 08:01 132746                     /usr/lib/libm-2.20.so
+7fd6b5ba5000-7fd6b5ba6000 rw-p 00104000 08:01 132746                     /usr/lib/libm-2.20.so
+7fd6b5ba6000-7fd6b5c96000 r-xp 00000000 08:01 135613                     /usr/lib/libstdc++.so.6.0.20
+7fd6b5c96000-7fd6b5e96000 ---p 000f0000 08:01 135613                     /usr/lib/libstdc++.so.6.0.20
+7fd6b5e96000-7fd6b5e9e000 r--p 000f0000 08:01 135613                     /usr/lib/libstdc++.so.6.0.20
+7fd6b5e9e000-7fd6b5ea0000 rw-p 000f8000 08:01 135613                     /usr/lib/libstdc++.so.6.0.20
+7fd6b5ea0000-7fd6b5eb5000 rw-p 00000000 00:00 0 
+7fd6b5eb5000-7fd6b69ff000 r-xp 00000000 08:01 270477                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/server/libjvm.so
+7fd6b69ff000-7fd6b6bff000 ---p 00b4a000 08:01 270477                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/server/libjvm.so
+7fd6b6bff000-7fd6b6cc1000 rw-p 00b4a000 08:01 270477                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/server/libjvm.so
+7fd6b6cc1000-7fd6b6ced000 rw-p 00000000 00:00 0 
+7fd6b6ced000-7fd6b6d02000 r-xp 00000000 08:01 135653                     /usr/lib/libz.so.1.2.8
+7fd6b6d02000-7fd6b6f01000 ---p 00015000 08:01 135653                     /usr/lib/libz.so.1.2.8
+7fd6b6f01000-7fd6b6f02000 r--p 00014000 08:01 135653                     /usr/lib/libz.so.1.2.8
+7fd6b6f02000-7fd6b6f03000 rw-p 00015000 08:01 135653                     /usr/lib/libz.so.1.2.8
+7fd6b6f03000-7fd6b709c000 r-xp 00000000 08:01 132747                     /usr/lib/libc-2.20.so
+7fd6b709c000-7fd6b729c000 ---p 00199000 08:01 132747                     /usr/lib/libc-2.20.so
+7fd6b729c000-7fd6b72a0000 r--p 00199000 08:01 132747                     /usr/lib/libc-2.20.so
+7fd6b72a0000-7fd6b72a2000 rw-p 0019d000 08:01 132747                     /usr/lib/libc-2.20.so
+7fd6b72a2000-7fd6b72a6000 rw-p 00000000 00:00 0 
+7fd6b72a6000-7fd6b72a9000 r-xp 00000000 08:01 132699                     /usr/lib/libdl-2.20.so
+7fd6b72a9000-7fd6b74a8000 ---p 00003000 08:01 132699                     /usr/lib/libdl-2.20.so
+7fd6b74a8000-7fd6b74a9000 r--p 00002000 08:01 132699                     /usr/lib/libdl-2.20.so
+7fd6b74a9000-7fd6b74aa000 rw-p 00003000 08:01 132699                     /usr/lib/libdl-2.20.so
+7fd6b74aa000-7fd6b74b7000 r-xp 00000000 08:01 270473                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/jli/libjli.so
+7fd6b74b7000-7fd6b76b6000 ---p 0000d000 08:01 270473                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/jli/libjli.so
+7fd6b76b6000-7fd6b76b7000 rw-p 0000c000 08:01 270473                     /usr/lib/jvm/java-7-openjdk/jre/lib/amd64/jli/libjli.so
+7fd6b76b7000-7fd6b76ce000 r-xp 00000000 08:01 132714                     /usr/lib/libpthread-2.20.so
+7fd6b76ce000-7fd6b78cd000 ---p 00017000 08:01 132714                     /usr/lib/libpthread-2.20.so
+7fd6b78cd000-7fd6b78ce000 r--p 00016000 08:01 132714                     /usr/lib/libpthread-2.20.so
+7fd6b78ce000-7fd6b78cf000 rw-p 00017000 08:01 132714                     /usr/lib/libpthread-2.20.so
+7fd6b78cf000-7fd6b78d3000 rw-p 00000000 00:00 0 
+7fd6b78d3000-7fd6b78f5000 r-xp 00000000 08:01 132706                     /usr/lib/ld-2.20.so
+7fd6b79df000-7fd6b79e2000 ---p 00000000 00:00 0 
+7fd6b79e2000-7fd6b7ae4000 rw-p 00000000 00:00 0                          [stack:2288]
+7fd6b7ae9000-7fd6b7af1000 rw-s 00000000 00:1e 17072                      /tmp/hsperfdata_vagrant/2287
+7fd6b7af1000-7fd6b7af2000 rw-p 00000000 00:00 0 
+7fd6b7af2000-7fd6b7af3000 r--p 00000000 00:00 0 
+7fd6b7af3000-7fd6b7af4000 rw-p 00000000 00:00 0 
+7fd6b7af4000-7fd6b7af5000 r--p 00021000 08:01 132706                     /usr/lib/ld-2.20.so
+7fd6b7af5000-7fd6b7af6000 rw-p 00022000 08:01 132706                     /usr/lib/ld-2.20.so
+7fd6b7af6000-7fd6b7af7000 rw-p 00000000 00:00 0 
+7fffd2881000-7fffd28a2000 rw-p 00000000 00:00 0                          [stack]
+7fffd290b000-7fffd290d000 r--p 00000000 00:00 0                          [vvar]
+7fffd290d000-7fffd290f000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Xbootclasspath/a:/home/vagrant/.lein/self-installs/leiningen-2.5.1-standalone.jar -Dfile.encoding=UTF-8 -Dmaven.wagon.http.ssl.easy=false -Dmaven.wagon.rto=10000 -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Dleiningen.original.pwd=/home/vagrant/cs331/heap-lab -Dleiningen.script=/home/vagrant/bin/lein 
+java_command: clojure.main -m leiningen.core.main midje
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+CLASSPATH=/home/vagrant/.lein/self-installs/leiningen-2.5.1-standalone.jar
+PATH=/home/vagrant/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+SHELL=/bin/bash
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x97eaa0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x97eaa0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x7ece30], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x7ece30], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x7ece30], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x7ece30], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x7eccb0], sa_mask[0]=0x00000000, sa_flags=0x10000004
+SIGHUP: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGINT: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGTERM: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGQUIT: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGTRAP: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+
+
+---------------  S Y S T E M  ---------------
+
+OS:Linux
+uname:Linux 3.17.6-1-ARCH #1 SMP PREEMPT Sun Dec 7 23:43:32 UTC 2014 x86_64
+libc:glibc 2.20 NPTL 2.20 
+rlimit: STACK 8192k, CORE 0k, NPROC 3969, NOFILE 4096, AS infinity
+load average:4.21 1.19 0.44
+
+/proc/meminfo:
+MemTotal:        1021716 kB
+MemFree:           58072 kB
+MemAvailable:       7512 kB
+Buffers:             116 kB
+Cached:             2136 kB
+SwapCached:            0 kB
+Active:           906804 kB
+Inactive:           1504 kB
+Active(anon):     906464 kB
+Inactive(anon):      944 kB
+Active(file):        340 kB
+Inactive(file):      560 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 4 kB
+Writeback:             4 kB
+AnonPages:        906284 kB
+Mapped:             1312 kB
+Shmem:              1124 kB
+Slab:              22816 kB
+SReclaimable:      10596 kB
+SUnreclaim:        12220 kB
+KernelStack:        3616 kB
+PageTables:        13620 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      510856 kB
+Committed_AS:    1208276 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       19892 kB
+VmallocChunk:   34359717879 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:    538624 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       40896 kB
+DirectMap2M:     1007616 kB
+
+
+CPU:total 4 (4 cores per cpu, 1 threads per core) family 6 model 70 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, tsc
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 70
+model name	: Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
+stepping	: 1
+microcode	: 0x19
+cpu MHz		: 2213.747
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 4
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 5
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl pni ssse3 lahf_lm
+bugs		:
+bogomips	: 4429.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 70
+model name	: Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
+stepping	: 1
+microcode	: 0x19
+cpu MHz		: 2213.747
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 4
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 5
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl pni ssse3 lahf_lm
+bugs		:
+bogomips	: 4429.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 70
+model name	: Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
+stepping	: 1
+microcode	: 0x19
+cpu MHz		: 2213.747
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 2
+cpu cores	: 4
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 5
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl pni ssse3 lahf_lm
+bugs		:
+bogomips	: 4429.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 70
+model name	: Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
+stepping	: 1
+microcode	: 0x19
+cpu MHz		: 2213.747
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 3
+cpu cores	: 4
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 5
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl pni ssse3 lahf_lm
+bugs		:
+bogomips	: 4429.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 1021716k(57840k free), swap 0k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (24.75-b04) for linux-amd64 JRE (1.7.0_75-b13), built on Jan 23 2015 11:04:40 by "builduser" with gcc 4.9.2 20141224 (prerelease)
+
+time: Sun Apr 26 14:27:45 2015
+elapsed time: 21 seconds
+
