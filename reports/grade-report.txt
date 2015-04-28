@@ -1,0 +1,27 @@
+Grade Report for Aqueel Miqdad NLN
+Produced 2015-04-28 12:37
+Netid: amiqdad cwid: A20324679
+Course: cs331 (2015-01)  Section: 01
+
+                   Assignment  Status Raw Max    Norm Weight  Points 
+----------------------------- ------- --- --- ------- ------ ------- 
+                   First Exam  Graded  72  80  90.00% 0.3750 33.7500 
+             Second Exam (v1)  Graded  90  92  97.83% 0.3750 36.6848 
+                   Final Exam Pending n/a 100     n/a 0.0000  0.0000 
+                  Initial Lab  Graded 100 100 100.00% 0.0375  3.7500 
+              Linked List Lab  Graded  98 100  98.00% 0.0375  3.6750 
+                    Deque Lab  Graded 100 100 100.00% 0.0375  3.7500 
+                      BST Lab  Graded 100 100 100.00% 0.0375  3.7500 
+                     Heap Lab Dropped  45 100  45.00% 0.0000  0.0000 
+        Pre Course Assessment  Graded   1   1 100.00% 0.0125  1.2500 
+Clojure Introduction Activity  Graded   1   1 100.00% 0.0125  1.2500 
+                      Records Missing   0   1   0.00% 0.0125  0.0000 
+                    Recursion  Graded   1   1 100.00% 0.0125  1.2500 
+              Immutable Lists  Graded   1   1 100.00% 0.0125  1.2500 
+                      Vectors Pending n/a   1     n/a 0.0000  0.0000 
+          Binary Search Trees  Graded   1   1 100.00% 0.0125  1.2500 
+                   Traversals  Graded   1   1 100.00% 0.0125  1.2500 
+                        Heaps  Graded   1   1 100.00% 0.0125  1.2500 
+                     Up Trees Pending n/a   1     n/a 0.0000  0.0000 
+----------------------------- ------- --- --- ------- ------ ------- 
+                        Total                  94.11% 1.0000 94.1098 
